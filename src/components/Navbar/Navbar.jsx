@@ -15,19 +15,20 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { NavLink } from "react-router-dom";
 import MyContainer from "../Shared/MyContainer";
 import useAuth from "../../hooks/useAuth";
+import DarkMode from "../DarkMode/DarkMode";
+
 
 function Navbar() {
-  const { user,loading } = useAuth();
+  const { user, loading } = useAuth();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   let pages;
- {
+  {
     user
       ? (pages = ["home", "all-property", "Blog", "dashboard"])
       : (pages = ["home", "all-property", "Blog", "login"]);
- 
- }
+  }
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
   const handleOpenNavMenu = (event) => {
@@ -46,8 +47,8 @@ function Navbar() {
   };
 
   return (
-    <MyContainer>
-      <AppBar position="static" sx={{ backgroundColor: "#12086F" }}>
+    <MyContainer >
+      <AppBar position="static" sx={{ backgroundColor: "gray" }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -166,6 +167,11 @@ function Navbar() {
                 {/* avatar part */}
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+
+                {/* dark Theme */}
+                <IconButton sx={{ p: 0 }}>
+                  <DarkMode />
                 </IconButton>
               </Tooltip>
               <Menu
