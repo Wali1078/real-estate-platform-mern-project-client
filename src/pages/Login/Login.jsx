@@ -13,6 +13,10 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SocialSignIn from "../../components/Shared/SocialSignIn";
+import toast from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
+import { useForm } from "react-hook-form";
+import { NavLink } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -37,13 +41,29 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Login() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  const { user, signIn, signInWithGoogle, loading } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    watch,
+    formState,
+    formState: { errors },
+  } = useForm();
+  console.log(errors);
+
+  const onSubmit = async (data) => {
+    console.log(data);
+
+    try {
+      //2. User Registration
+      const result = await signIn(data.email, data.password);
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.message /* { id: toastId } */);
+    }
   };
 
   return (
@@ -86,33 +106,71 @@ export default function Login() {
             <Box
               component="form"
               noValidate
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit(onSubmit)}
+              //   onSubmit={handleSubmit}
               sx={{ mt: 1 }}
             >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
+             <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  {...register("email", {
+                    required: true,
+                    pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                  })}
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12}>
+                {errors.email?.type === "required" && (
+                  <span className="text-red-600">Email is required</span>
+                )}
+                {errors.email?.type === "pattern" && (
+                  <p className="text-red-600">Please enter a valid email</p>
+                )}
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    
+                  })}
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                {errors.password?.type === "required" && (
+                  <p className="text-red-600">Password is required</p>
+                )}
+                {errors.password?.type === "minLength" && (
+                    <p className="text-red-600">
+                      Password must be 6 characters
+                    </p>
+                  )}
+              </Grid>
+              <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
+                control={<Checkbox value="remember" color="primary"  {...register("check")}
+                      name="check"/>}
                 label="Remember me"
               />
+              </Grid>
+             
+              </Grid>
               <Button
                 type="submit"
                 fullWidth
@@ -128,12 +186,12 @@ export default function Login() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/signup" variant="body2">
+                  <NavLink to="/signup" className="text-blue-600">
                     {"Don't have an account? Sign Up"}
-                  </Link>
+                  </NavLink>
                 </Grid>
               </Grid>
-                <SocialSignIn/>
+              <SocialSignIn />
               <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>

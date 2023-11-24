@@ -12,7 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SocialSignIn from "../../components/Shared/SocialSignIn";
-import { Form } from "react-router-dom";
+import { Form, NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import React from "react";
 import useAuth from "../../hooks/useAuth";
@@ -270,9 +270,9 @@ export default function Signup() {
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link href="/login" variant="body2">
+                  <NavLink to="/login" className="text-blue-600">
                     Already have an account? Sign in
-                  </Link>
+                  </NavLink>
                 </Grid>
               </Grid>
               <SocialSignIn />
