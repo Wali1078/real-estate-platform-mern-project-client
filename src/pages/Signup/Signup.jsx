@@ -1,4 +1,3 @@
-import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,6 +11,12 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import SocialSignIn from "../../components/Shared/SocialSignIn";
+import { Form } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import React from "react";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 function Copyright(props) {
   return (
@@ -36,13 +41,40 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Signup() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const { user,createUser, updateUserProfile, signInWithGoogle, loading }=useAuth();
+
+
+
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    watch,
+    formState,
+    formState: { errors },
+  } = useForm();
+  console.log(errors);
+
+  const onSubmit =async (data) => {
+    console.log(data);
+
+    try {
+        
+  
+        //2. User Registration
+         const result = await createUser(data.email, data.password);
+         console.log(result);
+  
+       
+      } catch (err) {
+        console.log(err);
+        toast.error(err?.message, /* { id: toastId } */);
+      }
+
+
+
   };
 
   return (
@@ -81,18 +113,20 @@ export default function Signup() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign up
+              Signup Now
             </Typography>
 
             <Box
               component="form"
               noValidate
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit(onSubmit)}
+              //   onSubmit={handleSubmit}
               sx={{ mt: 3 }}
             >
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                    {...register("firstName", { required: true })}
                     autoComplete="given-name"
                     name="firstName"
                     required
@@ -104,6 +138,7 @@ export default function Signup() {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                    {...register("lastName", { required: true })}
                     required
                     fullWidth
                     id="lastName"
@@ -113,7 +148,40 @@ export default function Signup() {
                   />
                 </Grid>
                 <Grid item xs={12}>
+                  {errors.firstName?.type === "required" && (
+                    <p className="text-red-600">First Name is required</p>
+                  )}
+                  {errors.lastName?.type === "required" && (
+                    <p className="text-red-600">Last Name is required</p>
+                  )}
+                </Grid>
+                <Grid item xs={12}>
                   <TextField
+                    {...register("photoURL", { required: true })}
+                    name="photoURL"
+                    required
+                    fullWidth
+                    id="upload"
+                    label="Select Your Profile Image:"
+                    type="file"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  {errors.photoURL?.type === "required" && (
+                    <p className="text-red-600">Photo URL is required</p>
+                  )}
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    {...register("email", {
+                         required: true,
+                        pattern: 
+                        /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                    
+                     })}
                     required
                     fullWidth
                     id="email"
@@ -123,7 +191,24 @@ export default function Signup() {
                   />
                 </Grid>
                 <Grid item xs={12}>
+                  {errors.email?.type === "required" && (
+                    <p className="text-red-600">Email is required</p>
+                  )}
+                  {errors.email?.type === "pattern" && (
+                    <p className="text-red-600">
+                     Please enter a valid email
+                    </p>
+                  )}
+                </Grid>
+                <Grid item xs={12}>
                   <TextField
+                    {...register("password", {
+                      required: true,
+                      minLength: 6,
+                      maxLength: 20,
+                      pattern:
+                        /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                    })}
                     required
                     fullWidth
                     name="password"
@@ -134,14 +219,47 @@ export default function Signup() {
                   />
                 </Grid>
                 <Grid item xs={12}>
+                  {errors.password?.type === "required" && (
+                    <p className="text-red-600">Password is required</p>
+                  )}
+                  {errors.password?.type === "minLength" && (
+                    <p className="text-red-600">
+                      Password must be 6 characters
+                    </p>
+                  )}
+                  {errors.password?.type === "maxLength" && (
+                    <p className="text-red-600">
+                      Password must be less than 20 characters
+                    </p>
+                  )}
+                  {errors.password?.type === "pattern" && (
+                    <p className="text-red-600">
+                      Password must have one Uppercase one lower case, one
+                      number and one special character.
+                    </p>
+                  )}
+                </Grid>
+                <Grid item xs={12}>
                   <FormControlLabel
                     control={
-                      <Checkbox value="allowExtraEmails" color="primary" />
+                      <Checkbox
+                      {...register("check", { required: true })}
+                      name="check"
+                        value="allowExtraEmails"
+                        color="primary"
+                        required
+                      />
                     }
-                    label="I want to receive inspiration, marketing promotions and updates via email."
+                    label={`I want to accept your T&C`}
                   />
                 </Grid>
+                <Grid item xs={12}>
+                  {errors.check?.type === "required" && (
+                    <p className="text-red-600">Please Accept T&C</p>
+                  )}
+                </Grid>
               </Grid>
+
               <Button
                 type="submit"
                 fullWidth
@@ -157,7 +275,9 @@ export default function Signup() {
                   </Link>
                 </Grid>
               </Grid>
+              <SocialSignIn />
             </Box>
+
             <Copyright sx={{ mt: 5 }} />
           </Box>
         </Grid>
