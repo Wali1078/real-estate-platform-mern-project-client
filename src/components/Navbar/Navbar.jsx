@@ -13,7 +13,6 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { NavLink } from "react-router-dom";
-import MyContainer from "../Shared/MyContainer";
 import useAuth from "../../hooks/useAuth";
 import DarkMode from "../DarkMode/DarkMode";
 
@@ -47,9 +46,9 @@ function Navbar() {
   };
 
   return (
-    <MyContainer >
-      <AppBar position="static" sx={{ backgroundColor: "gray" }}>
-        <Container maxWidth="xl">
+
+      <AppBar position="fixed"  sx={{ backgroundColor: 'transparent', boxShadow: 'none' , margin: '0 auto' }} >
+        <Container >
           <Toolbar disableGutters>
             <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
             <Typography
@@ -200,7 +199,7 @@ function Navbar() {
           </Toolbar>
         </Container>
       </AppBar>
-    </MyContainer>
+  
   );
 }
 
