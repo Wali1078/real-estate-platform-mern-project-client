@@ -12,11 +12,14 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SocialSignIn from "../../components/Shared/SocialSignIn";
-import { Form, NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import React from "react";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { imageUpload } from "../../api/utils";
+import { getToken, saveUser } from "../../api/auth";
+import { TbLoader3 } from "react-icons/tb";
+
 
 function Copyright(props) {
   return (
@@ -41,10 +44,11 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Signup() {
-    const { user,createUser, updateUserProfile, signInWithGoogle, loading }=useAuth();
-
-
-
+  const { user, createUser, updateUserProfile, signInWithGoogle, loading } =
+    useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
 
   const {
     register,
@@ -57,24 +61,36 @@ export default function Signup() {
   } = useForm();
   console.log(errors);
 
-  const onSubmit =async (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
-
+    // const toastId = toast.loading("Creating user ...");
     try {
-        
-  
-        //2. User Registration
-         const result = await createUser(data.email, data.password);
-         console.log(result);
-  
-       
-      } catch (err) {
-        console.log(err);
-        toast.error(err?.message, /* { id: toastId } */);
-      }
+      //1. Upload Image
+      const imageFile = { image: data.photoURL[0] };
+      // console.log(imageFile);
+      const imageData = await imageUpload(imageFile);
+      console.log(imageData);
 
+      //2. User Registration
+      const result = await createUser(data.email, data.password);
+      console.log(result);
 
+      //3. Save username & profile photo
+      const fullName = `${data.firstName} ${data.lastName}`;
+      await updateUserProfile(fullName, imageData?.data?.display_url);
 
+      //4. save user data in database
+      const dbResponse = await saveUser(result?.user);
+      console.log(dbResponse);
+      //5. get token
+      await getToken(result?.user?.email);
+      navigate(from, { replace: true });
+
+      toast.success("Signup Successful");
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.message);
+    }
   };
 
   return (
@@ -177,11 +193,9 @@ export default function Signup() {
                 <Grid item xs={12}>
                   <TextField
                     {...register("email", {
-                         required: true,
-                        pattern: 
-                        /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                    
-                     })}
+                      required: true,
+                      pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                    })}
                     required
                     fullWidth
                     id="email"
@@ -195,9 +209,7 @@ export default function Signup() {
                     <p className="text-red-600">Email is required</p>
                   )}
                   {errors.email?.type === "pattern" && (
-                    <p className="text-red-600">
-                     Please enter a valid email
-                    </p>
+                    <p className="text-red-600">Please enter a valid email</p>
                   )}
                 </Grid>
                 <Grid item xs={12}>
@@ -243,8 +255,8 @@ export default function Signup() {
                   <FormControlLabel
                     control={
                       <Checkbox
-                      {...register("check", { required: true })}
-                      name="check"
+                        {...register("check", { required: true })}
+                        name="check"
                         value="allowExtraEmails"
                         color="primary"
                         required
@@ -266,7 +278,11 @@ export default function Signup() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign Up
+                {loading ? (
+                <TbLoader3 className='animate-spin m-auto' />
+              ) : (
+                'Sign up'
+              )}
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
