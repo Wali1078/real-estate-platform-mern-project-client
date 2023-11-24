@@ -1,7 +1,8 @@
+import MyContainer from "../../components/Shared/MyContainer"
 
 const AllProperty = () => {
   return (
-    <div>AllProperty</div>
+    <MyContainer>AllProperty</MyContainer>
   )
 }
 

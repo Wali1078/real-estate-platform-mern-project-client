@@ -3,6 +3,8 @@ import MainLayouts from "../layouts/MainLayouts";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AllProperty from "../pages/AllProperty/AllProperty";
 import Home from "../pages/Home/Home";
+import Login from "../pages/Login/Login";
+import Signup from "../pages/Signup/Signup";
 
 const MainRoutes = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ const MainRoutes = createBrowserRouter([
         element: <AllProperty></AllProperty>,
       },
     ],
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "signup",
+    element: <Signup />,
   },
 ]);
 

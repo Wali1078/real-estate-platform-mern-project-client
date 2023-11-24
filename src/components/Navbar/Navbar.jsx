@@ -15,7 +15,8 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { NavLink } from "react-router-dom";
 import MyContainer from "../Shared/MyContainer";
 
-const pages = ["home", "all-property", "Blog"];
+
+const pages = ["home", "all-property", "Blog","login"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function Navbar() {
@@ -154,8 +155,9 @@ function Navbar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
+            {/* avatar part */}
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
               </IconButton>
             </Tooltip>
             <Menu
