@@ -13,8 +13,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import HouseSidingIcon from "@mui/icons-material/HouseSiding";
 import { NavLink, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-import DarkMode from "../DarkMode/DarkMode";
+import useAuth from "../../../hooks/useAuth";
+import DarkMode from "../../DarkMode/DarkMode";
 
 function Navbar() {
   const navigate = useNavigate()

@@ -1,16 +1,19 @@
 import { MdOutlineHouseSiding } from "react-icons/md";
-
+import Title from "../../Title/Title";
 
 const Footer = () => {
   return (
     <div>
-    <h1 className="text-6xl text-center">Footer</h1>
+      <Title name={`Footer`} />
       <footer className="bg-white dark:bg-gray-900">
         <div className="container p-6 mx-auto">
           <div className="lg:flex">
             <div className="w-full -mx-6 lg:w-2/5">
               <div className="px-6 text-gray-500 dark:text-gray-400">
-              <span className="flex text-4xl"> Dream <MdOutlineHouseSiding size={45}/></span>
+                <span className="flex text-4xl">
+                  {" "}
+                  Dream <MdOutlineHouseSiding size={45} />
+                </span>
 
                 <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">
                   Join 31,000+ other and never miss out on new tips, tutorials,
