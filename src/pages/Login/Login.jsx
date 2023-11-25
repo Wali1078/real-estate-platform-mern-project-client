@@ -18,7 +18,6 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { getToken } from "../../api/auth";
 import { TbLoader3 } from "react-icons/tb";
 import toast from "react-hot-toast";
-import CustomizedSnackbars from "../../components/CustomizedSnackbars/CustomizedSnackbars";
 
 function Copyright(props) {
   return (
