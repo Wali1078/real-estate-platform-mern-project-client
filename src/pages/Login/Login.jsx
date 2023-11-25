@@ -18,6 +18,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { getToken } from "../../api/auth";
 import { TbLoader3 } from "react-icons/tb";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 function Copyright(props) {
   return (
@@ -79,6 +80,9 @@ export default function Login() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+     <Helmet>
+        <title>Dream🏚️ |  Login</title>
+      </Helmet>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid

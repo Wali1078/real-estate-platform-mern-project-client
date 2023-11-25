@@ -5,6 +5,8 @@ import AllProperty from "../pages/AllProperty/AllProperty";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
+import PrivateRoute from "./PrivateRoute";
+import LoginPrivate from "./LoginPrivate";
 
 const MainRoutes = createBrowserRouter([
   {
@@ -18,17 +20,17 @@ const MainRoutes = createBrowserRouter([
       },
       {
         path: "all-property",
-        element: <AllProperty></AllProperty>,
+        element: <PrivateRoute><AllProperty /></PrivateRoute>,
       },
     ],
   },
   {
     path: "login",
-    element: <Login />,
+    element: <LoginPrivate><Login /></LoginPrivate>,
   },
   {
     path: "signup",
-    element: <Signup />,
+    element: <LoginPrivate><Signup /></LoginPrivate>,
   },
 ]);
 

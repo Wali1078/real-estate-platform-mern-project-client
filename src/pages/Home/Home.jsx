@@ -6,11 +6,15 @@ import Review from "../../components/Home/Review/Review";
 import Accordion from "../../components/Home/Accordion/Accordion";
 import GetUpdate from "../../components/Home/GetUpdate/GetUpdate";
 import ContactUs from "../../components/Home/ContactUs/ContactUs";
+import { Helmet } from "react-helmet-async";
 
 
 const Home = () => {
   return (
     <MyContainer>
+      <Helmet>
+        <title>Dream 🏚️ | Home</title>
+      </Helmet>
       <Banner />
       <Advertisement />
       <Review/>

@@ -19,6 +19,7 @@ import toast from "react-hot-toast";
 import { imageUpload } from "../../api/utils";
 import { getToken, saveUser } from "../../api/auth";
 import { TbLoader3 } from "react-icons/tb";
+import { Helmet } from "react-helmet-async";
 
 
 function Copyright(props) {
@@ -95,6 +96,9 @@ export default function Signup() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+     <Helmet>
+        <title>Dream🏚️ |  Signup</title>
+      </Helmet>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
 

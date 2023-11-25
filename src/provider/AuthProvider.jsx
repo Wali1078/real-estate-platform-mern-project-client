@@ -3,7 +3,6 @@ import { createContext, useEffect, useState } from 'react'
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  getAuth,
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
@@ -12,6 +11,7 @@ import {
   updateProfile,
 } from 'firebase/auth'
 import { auth } from '../config/firebaseConfig'
+import { clearCookie } from '../api/auth'
 
 
 
@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
 
   const logOut = async () => {
     setLoading(true)
- 
+    await clearCookie()
     return signOut(auth)
   }
 

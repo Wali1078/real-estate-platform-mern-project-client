@@ -3,7 +3,7 @@ import { RotatingTriangles } from  'react-loader-spinner'
 const Loader = () => {
   return (
     <div
-      className="h-[70vh]
+      className="h-[90vh]
       flex 
       flex-col 
       justify-center 
