@@ -8,10 +8,12 @@ import '@fontsource/roboto/700.css';
 import { RouterProvider } from 'react-router-dom';
 import MainRoutes from './routes/MainRoutes.jsx';
 import AuthProvider from './provider/AuthProvider.jsx';
+import { Toaster } from 'react-hot-toast';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
+    <Toaster />
     <RouterProvider router={MainRoutes} />
     </AuthProvider>
   </React.StrictMode>,

@@ -34,8 +34,8 @@ function Navbar() {
 
   {
     user
-      ? (settings = ["Profile", "Account", "Dashboard", "Logout"])
-      : (settings = ["Profile", "Account", "Dashboard", "Login"]);
+      ? (settings = ["Profile", " My Account", "Logout"])
+      : (settings = ["Profile", "My Account", "Login"]);
   }
 
   const handleOpenNavMenu = (event) => {
@@ -197,12 +197,12 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             {/* //display user name and role */}
             <Typography sx={{ pr: 2, display: { xs: "none", md: "initial" } }}>
-              <span className="font-bold text-xl dark:text-white">{`Hi, ${user?.displayName} (Host)`}</span>
+              <span className="font-bold text-xl dark:text-white">{user ? `Hi, ${user.displayName} (Host)` : ' '}</span>
             </Typography>
             <Tooltip title="Open settings">
               {/* avatar part */}
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={user? user?.photoURL : "/static/images/avatar/2.jpg"} />
+                <Avatar alt="Remy Sharp" src={user? user?.photoURL : "https://i.ibb.co/k34HkxR/istockphoto-1300845620-612x612.jpg"} />
               </IconButton>
 
               {/* dark Theme */}

@@ -63,7 +63,7 @@ export default function Signup() {
 
   const onSubmit = async (data) => {
     console.log(data);
-    // const toastId = toast.loading("Creating user ...");
+    const toastId = toast.loading("Creating user ...");
     try {
       //1. Upload Image
       const imageFile = { image: data.photoURL[0] };
@@ -86,10 +86,10 @@ export default function Signup() {
       await getToken(result?.user?.email);
       navigate(from, { replace: true });
 
-      toast.success("Signup Successful");
+      toast.success("Signup Successful", { id: toastId });
     } catch (err) {
       console.log(err);
-      toast.error(err?.message);
+      toast.error(err?.message, { id: toastId });
     }
   };
 
