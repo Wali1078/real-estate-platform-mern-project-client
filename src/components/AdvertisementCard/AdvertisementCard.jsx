@@ -1,40 +1,53 @@
-import React from 'react';
+import React from "react";
 
-const AdvertisementCard = () => {
+const AdvertisementCard = ({ property }) => {
+  // console.log(Object.keys(property).join());
+  const {
+    _id,
+    title,
+    image,
+    location,
+    priceRangeStart,
+    priceRangeEnd,
+    verificationStatus,
+  } = property || {};
   return (
     <div>
-      <div className="my-4 max-w-md rounded-lg bg-gray-200 shadow dark:bg-gray-900">
+      <div className="my-4  rounded-lg bg-gray-200 shadow dark:bg-gray-900">
         <div className="mx-3 flex flex-row px-2 py-2">
           <div className="h-auto w-auto rounded-full">
             <img
               className="h-12 w-12 cursor-pointer rounded-full object-cover shadow"
               alt="User avatar"
-              src="https://i.pinimg.com/564x/55/59/6d/55596d11739f22c9cc223aad982ac391.jpg"
+              src={image}
             />
           </div>
           <div className="mb-2 ml-4 mt-1 flex flex-col">
             <div className="text-sm font-semibold text-gray-800 dark:text-gray-50">
-              Iratxe Torrejone
+              ${priceRangeStart} to ${priceRangeEnd}
             </div>
             <div className="mt-1 flex w-full">
-              <div className="font-base mr-1 cursor-pointer text-xs text-slate-400">
-                UX Design
+              <div className="font-base mr-1 cursor-pointer text-xs text-green-800 dark:text-green-400">
+                {verificationStatus}
               </div>
-              <div className="text-xs font-thin text-gray-400">• 1 day ago</div>
+              {/* <div className="text-xs font-thin text-gray-400">• 1 day ago</div> */}
             </div>
           </div>
         </div>
         <div className="mx-3 mb-7 mt-1 px-2 text-sm font-medium text-gray-400">
-          <img className="w-full rounded" src="https://picsum.photos/536/354" alt="Advertisement" />
+          <img className="w-full rounded" src={image} alt="Advertisement" />
         </div>
         <div className="mx-3 mb-2 px-2 font-semibold text-slate-500">
-          Dummy text of the printing
+          Title : {title}
         </div>
-        <div className="mx-3 mb-6 px-2 text-sm text-gray-600 dark:text-gray-300">
+        <div className="mx-3 mb-2 px-2 font-semibold text-gray-600 dark:text-gray-300">
+          Location : {location}
+        </div>
+        {/* <div className="mx-3 mb-6 px-2 text-sm text-gray-600 dark:text-gray-300">
           The printing and typesetting industry. Lorem Ipsum has been the
           industry's standard dummy text ever since the 1500
-        </div>
-        <div className="w-ful flex">
+        </div> */}
+        {/*   <div className="w-ful flex">
           <div className="mx-5 flex flex-row text-xs">
             <div className="mb-2 mr-4 flex items-center rounded-md font-normal text-gray-500 dark:text-gray-400">
               Comments:{" "}
@@ -77,8 +90,8 @@ const AdvertisementCard = () => {
               </span>
             </div>
           </div>
-        </div>
-        <div className="relative flex w-full items-center self-center overflow-hidden px-5 py-4 text-gray-600 focus-within:text-gray-400">
+        </div> */}
+        {/* <div className="relative flex w-full items-center self-center overflow-hidden px-5 py-4 text-gray-600 focus-within:text-gray-400">
           <img
             className="mr-2 h-10 w-10 cursor-pointer rounded-full object-cover shadow"
             alt="User avatar"
@@ -112,6 +125,14 @@ const AdvertisementCard = () => {
             placeholder="Post a comment..."
             autoComplete="off"
           />
+        </div> */}
+        <div className="text-center pb-5">
+          <button
+            type="button"
+            className="rounded-md  border-2 border-slate-400 px-5 py-2 text-sm font-medium text-slate-400 shadow-md transition duration-150 ease-in-out hover:bg-slate-400 hover:text-white hover:shadow-lg focus:outline-none focus:ring-0 active:bg-slate-600"
+          >
+            View Details
+          </button>
         </div>
       </div>
     </div>

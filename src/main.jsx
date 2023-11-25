@@ -1,20 +1,25 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-import { RouterProvider } from 'react-router-dom';
-import MainRoutes from './routes/MainRoutes.jsx';
-import AuthProvider from './provider/AuthProvider.jsx';
-import { Toaster } from 'react-hot-toast';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import { RouterProvider } from "react-router-dom";
+import MainRoutes from "./routes/MainRoutes.jsx";
+import AuthProvider from "./provider/AuthProvider.jsx";
+import { Toaster } from "react-hot-toast";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// Create a client
+const queryClient = new QueryClient();
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-    <Toaster />
-    <RouterProvider router={MainRoutes} />
-    </AuthProvider>
-  </React.StrictMode>,
-)
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <Toaster />
+        <RouterProvider router={MainRoutes} />
+      </AuthProvider>
+    </QueryClientProvider>
+  </React.StrictMode>
+);
