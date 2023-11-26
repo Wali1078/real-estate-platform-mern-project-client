@@ -35,7 +35,6 @@ function Copyright(props) {
         Real Estate
       </Link>{" "}
       {new Date().getFullYear()}
-      {"."}
     </Typography>
   );
 }
@@ -45,7 +44,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Signup() {
-  const { user, createUser, updateUserProfile, signInWithGoogle, loading } =
+  const { user, createUser, updateUserProfile,  loading } =
     useAuth();
   const navigate = useNavigate();
   const location = useLocation();

@@ -3,6 +3,7 @@ import axiosSecure from ".";
 // Save user data in database
 export const saveUser = async (user) => {
   const currentUser = {
+    name:user.displayName,
     email: user.email,
     role: "guest",
     status: "Verified",
@@ -29,4 +30,10 @@ export const clearCookie = async () => {
 export const getRole = async (email) => {
   const { data } = await axiosSecure(`/user/${email}`);
   return data.role;
+};
+
+// get all users
+export const getAllUsers = async () => {
+  const { data } = await axiosSecure("/users");
+  return data;
 };

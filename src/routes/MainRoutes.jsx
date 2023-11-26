@@ -19,6 +19,7 @@ import RequestedProperties from "../pages/Dashboard/Agent/RequestedProperties/Re
 import ManageProperties from "../pages/Dashboard/Admin/ManageProperties/ManageProperties";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ManageReviews from "../pages/Dashboard/Admin/ManageReviews/ManageReviews";
+import AdminRoute from "./AdminRoute";
 
 const MainRoutes = createBrowserRouter([
   {
@@ -101,7 +102,7 @@ const MainRoutes = createBrowserRouter([
       },
       {
         path: "manage-users",
-        element: <ManageUsers />,
+        element: <AdminRoute><ManageUsers /></AdminRoute>,
       },
       {
         path: "manage-reviews",
