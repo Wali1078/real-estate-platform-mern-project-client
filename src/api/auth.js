@@ -32,8 +32,24 @@ export const getRole = async (email) => {
   return data.role;
 };
 
+//update user role
+export const updateRole = async (email,role) => {
+  const updatedData = {
+    status: role,
+  };
+  const { data } = await axiosSecure.patch(`/users/${email}`, updatedData);
+  return data;
+};
+
+
 // get all users
 export const getAllUsers = async () => {
   const { data } = await axiosSecure("/users");
+  return data;
+};
+
+//delete a user
+export const deleteUser = async (id) => {
+  const { data } = await axiosSecure.delete(`/users/${id}`);
   return data;
 };
