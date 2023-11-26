@@ -9,7 +9,6 @@ const useRole = () => {
     queryFn: async () => await getRole(user?.email),
     queryKey: ['role'],
   })
-
   return [role, isLoading]
 }
 

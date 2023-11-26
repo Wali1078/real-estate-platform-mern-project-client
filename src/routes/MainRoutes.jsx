@@ -62,7 +62,7 @@ const MainRoutes = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <MyProfile />,
+        element:  <PrivateRoute><MyProfile /></PrivateRoute>,
       },
       // user route
       {

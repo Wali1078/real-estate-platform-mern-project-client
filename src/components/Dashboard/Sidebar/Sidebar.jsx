@@ -1,9 +1,7 @@
-import { GrHome, GrLogout } from "react-icons/gr";
-import { FcHome, FcSettings } from "react-icons/fc";
+import {  GrLogout } from "react-icons/gr";
 import { AiOutlineBars } from "react-icons/ai";
-import { BsGraphUp } from "react-icons/bs";
-import { BsFillHouseAddFill } from "react-icons/bs";
-import { MdHomeWork, MdOutlineHouseSiding } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
+import { MdOutlineHouseSiding } from "react-icons/md";
 import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import useRole from "../../../hooks/useRole";
@@ -11,9 +9,9 @@ import { Link, useNavigate } from "react-router-dom";
 import DarkMode from "../../DarkMode/DarkMode";
 import { BiHomeAlt } from "react-icons/bi";
 import MenuWrapper from "../MenuWrapper/MenuWrapper";
-import UserMenu from "../../Shared/DashboardMenu/UserMenu";
-import AgentMenu from "../../Shared/DashboardMenu/AgentMenu";
-import AdminMenu from "../../Shared/DashboardMenu/AdminMenu";
+import UserMenu from "../DashboardMenu/UserMenu";
+import AgentMenu from "../DashboardMenu/AgentMenu";
+import AdminMenu from "../DashboardMenu/AdminMenu";
 
 const Sidebar = () => {
   const { user, logOut } = useAuth();
@@ -33,7 +31,6 @@ const Sidebar = () => {
           <div className="block cursor-pointer p-4 font-bold">
             {/* logo */}
             <Link to={`/`} className="flex text-3xl">
-              {" "}
               Dream <MdOutlineHouseSiding size={40} />
             </Link>
           </div>
@@ -80,24 +77,8 @@ const Sidebar = () => {
           <hr />
           {/* Nav Items */}
           <div className="flex flex-col justify-between flex-1 space-y-4 px-4">
-            {/* If a user is host */}
-            {/* {role === "host" && <ToggleBtn toggleHandler={toggleHandler} />} */}
-
-            <nav>
-              {/* <MenuItem */}
-              {/* icon={BsGraphUp} */}
-              {/* label="Statistics" */}
-              {/* address="/dashboard" */}
-              {/* /> */}
-
-              {/* Host Menu Items */}
-              {/* {role === "guest" && <GuestMenu />} */}
-              {/* {role === "host" ? toggle ? <HostMenu /> : <GuestMenu /> : ""} */}
-              {/* {role === "admin" && <AdminMenu />} */}
-            </nav>
-
             <MenuWrapper
-              icon={BsGraphUp}
+              icon={CgProfile}
               label={`My Profile`}
               address={`/dashboard`}
             ></MenuWrapper>
@@ -110,25 +91,20 @@ const Sidebar = () => {
           </div>
         </div>
 
-        <div>
+        <div className="flex  items-center justify-center w-full">
           <hr />
-
-          {/*  <MenuItem
-            icon={FcSettings}
-            label="Profile"
-            address="/dashboard/profile"
-          /> */}
-
+         
           <button
             onClick={() => navigate("/")}
-            className="flex w-full items-center px-4 py-2 mt-5 text-lg hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
+            className="flex w-full items-center  px-4 py-2 mt-5 text-lg rounded-lg hover:bg-white dark:hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
           >
             <BiHomeAlt className="w-5 h-5" />
             <span className="mx-4 font-medium">Home</span>
           </button>
+
           <button
             onClick={logOut}
-            className="flex w-full items-center px-4 py-2 mt-5  text-lg hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
+            className="flex w-full items-center px-4 py-2 mt-5 rounded-lg text-lg hover:bg-white dark:hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
           >
             <GrLogout className="w-5 h-5" />
             <span className="mx-4 font-medium">Logout</span>

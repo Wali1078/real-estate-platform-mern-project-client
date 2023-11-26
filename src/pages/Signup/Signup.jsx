@@ -280,10 +280,10 @@ export default function Signup() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2,py:2 }}
               >
                 {loading ? (
-                <TbLoader3 className='animate-spin m-auto' />
+                <TbLoader3 size={30} className='animate-spin m-auto' />
               ) : (
                 'Sign up'
               )}

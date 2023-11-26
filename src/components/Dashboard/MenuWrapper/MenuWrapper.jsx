@@ -7,7 +7,7 @@ const MenuWrapper = ({label, address, icon: Icon}) => {
       to={address}
       end
       className={({ isActive }) =>
-        `flex items-center px-4 py-2   transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
+        `flex items-center px-4 py-2   transition-colors duration-300 transform  hover:bg-gray-200  hover:rounded-lg  hover:text-gray-700 ${
           isActive ? 'bg-blue-400 dark:bg-gray-300 text-xl font-semibold text-zinc-700 rounded-lg shadow-xl' : 'text-gray-800 text-lg font-medium'
         }`
       }

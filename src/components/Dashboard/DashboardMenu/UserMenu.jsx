@@ -1,21 +1,22 @@
-import { BsGraphUp } from "react-icons/bs";
-import MenuWrapper from "../../Dashboard/MenuWrapper/MenuWrapper";
+import MenuWrapper from "../MenuWrapper/MenuWrapper";
+import { MdOutlineAddBusiness, MdOutlineRateReview } from "react-icons/md";
+import { FaHeartCirclePlus } from "react-icons/fa6";
 
 const UserMenu = () => {
   return (
     <>
       <MenuWrapper
-        icon={BsGraphUp}
+        icon={FaHeartCirclePlus }
         label={`Wishlist`}
         address={`/dashboard/wishlist`}
       ></MenuWrapper>
       <MenuWrapper
-        icon={BsGraphUp}
+        icon={MdOutlineAddBusiness }
         label={`Property Bought`}
         address={`/dashboard/property-bought`}
       ></MenuWrapper>
       <MenuWrapper
-        icon={BsGraphUp}
+        icon={MdOutlineRateReview }
         label={`My Reviews`}
         address={`/dashboard/my-reviews`}
       ></MenuWrapper>

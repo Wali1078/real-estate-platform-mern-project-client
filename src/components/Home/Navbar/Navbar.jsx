@@ -28,15 +28,15 @@ function Navbar() {
   let pages;
   {
     user
-      ? (pages = ["home", "all-property", "Blog", "dashboard"])
-      : (pages = ["home", "all-property", "Blog", "login"]);
+      ? (pages = ["home", "all-property", "dashboard"])
+      : (pages = ["home", "all-property", "login"]);
   }
   //display logout and login conditionally
   let settings;
 
   {
     user
-      ? (settings = ["Profile", " My Account", "Logout"])
+      ? (settings = ["Profile", "My Account", "Logout"])
       : (settings = ["Profile", "My Account", "Login"]);
   }
 

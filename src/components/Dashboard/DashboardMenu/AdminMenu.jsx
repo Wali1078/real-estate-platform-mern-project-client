@@ -1,21 +1,23 @@
-import { BsGraphUp } from "react-icons/bs";
-import MenuWrapper from "../../Dashboard/MenuWrapper/MenuWrapper";
+import { GrUserManager } from "react-icons/gr";
+import { FaUsers } from "react-icons/fa";
+import { MdRateReview } from "react-icons/md";
+import MenuWrapper from "../MenuWrapper/MenuWrapper";
 
 const AdminMenu = () => {
   return (
     <>
       <MenuWrapper
-        icon={BsGraphUp}
+        icon={GrUserManager}
         label={`Manage Properties`}
         address={`/dashboard/manage-properties`}
       ></MenuWrapper>
       <MenuWrapper
-        icon={BsGraphUp}
+        icon={FaUsers}
         label={`Manage Users`}
         address={`/dashboard/manage-users`}
       ></MenuWrapper>
       <MenuWrapper
-        icon={BsGraphUp}
+        icon={MdRateReview}
         label={`Manage Reviews`}
         address={`/dashboard/manage-reviews`}
       ></MenuWrapper>
