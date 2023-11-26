@@ -12,6 +12,13 @@ import MyProfile from "../pages/Dashboard/Common/MyProfile/MyProfile";
 import WishList from "../pages/Dashboard/User/WishList/WishList";
 import PropertyBought from "../pages/Dashboard/User/PropertyBought/PropertyBought";
 import MyReviews from "../pages/Dashboard/User/MyReviews/MyReviews";
+import AddProperty from "../pages/Dashboard/Agent/AddProperty/AddProperty";
+import MyAddedProperties from "../pages/Dashboard/Agent/MyAddedProperties/MyAddedProperties";
+import MySoldProperties from "../pages/Dashboard/Agent/MySoldProperties/MySoldProperties";
+import RequestedProperties from "../pages/Dashboard/Agent/RequestedProperties/RequestedProperties";
+import ManageProperties from "../pages/Dashboard/Admin/ManageProperties/ManageProperties";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
+import ManageReviews from "../pages/Dashboard/Admin/ManageReviews/ManageReviews";
 
 const MainRoutes = createBrowserRouter([
   {
@@ -57,6 +64,7 @@ const MainRoutes = createBrowserRouter([
         index: true,
         element: <MyProfile />,
       },
+      // user route
       {
         path: "wishlist",
         element: <WishList />,
@@ -69,6 +77,37 @@ const MainRoutes = createBrowserRouter([
         path: "my-reviews",
         element: <MyReviews />,
       },
+      // agent route
+      {
+        path: "add-property",
+        element: <AddProperty />,
+      },
+      {
+        path: "added-properties",
+        element: <MyAddedProperties/>,
+      },
+      {
+        path: "sold-properties",
+        element: <MySoldProperties />,
+      },
+      {
+        path: "requested-properties",
+        element: <RequestedProperties />,
+      },
+      // admin route
+      {
+        path: "manage-properties",
+        element: <ManageProperties />,
+      },
+      {
+        path: "manage-users",
+        element: <ManageUsers />,
+      },
+      {
+        path: "manage-reviews",
+        element: <ManageReviews />,
+      }
+      
     ],
   },
 ]);

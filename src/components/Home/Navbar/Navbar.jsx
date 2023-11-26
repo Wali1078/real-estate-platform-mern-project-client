@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import HouseSidingIcon from "@mui/icons-material/HouseSiding";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import DarkMode from "../../DarkMode/DarkMode";
 import useRole from "../../../hooks/useRole";
@@ -78,27 +78,33 @@ function Navbar() {
     >
       <Container>
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-              fontSize: 30,
-            }}
-          >
-            Dream
-            <HouseSidingIcon
-              sx={{ fontSize: 45, display: { xs: "none", md: "flex" }, mr: 1 }}
-            />
-          </Typography>
+          {/* logo for md and lg */}
+          <Link to={`/`}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+                fontSize: 30,
+              }}
+            >
+              Dream
+              <HouseSidingIcon
+                sx={{
+                  fontSize: 45,
+                  display: { xs: "none", md: "flex" },
+                  mr: 1,
+                }}
+              />
+            </Typography>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -150,11 +156,12 @@ function Navbar() {
             </Menu>
           </Box>
 
+          {/* logo fo sm */}
+
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -237,11 +244,11 @@ function Navbar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting}  onClick={() => handleMenuClick(setting)} >
-                  <Typography
-                    textAlign="center"
-                    onClick={handleCloseUserMenu}
-                  >
+                <MenuItem
+                  key={setting}
+                  onClick={() => handleMenuClick(setting)}
+                >
+                  <Typography textAlign="center" onClick={handleCloseUserMenu}>
                     {setting}
                   </Typography>
                 </MenuItem>
