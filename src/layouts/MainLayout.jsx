@@ -4,9 +4,8 @@ import Navbar from "../components/Home/Navbar/Navbar";
 const MainLayouts = () => {
   return (
     <div>
-   
-        <Navbar />
- 
+      <Navbar />
+
       <Outlet />
     </div>
   );
