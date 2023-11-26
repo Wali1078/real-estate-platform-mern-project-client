@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="w-full -mx-6 lg:w-2/5">
               <div className="px-6 text-gray-500 dark:text-gray-400">
                 <span className="flex text-4xl">
-                  {" "}
+                
                   Dream <MdOutlineHouseSiding size={45} />
                 </span>
 

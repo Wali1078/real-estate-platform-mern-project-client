@@ -15,10 +15,12 @@ import HouseSidingIcon from "@mui/icons-material/HouseSiding";
 import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import DarkMode from "../../DarkMode/DarkMode";
+import useRole from "../../../hooks/useRole";
 
 function Navbar() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { user, loading, logOut } = useAuth();
+  const [role] = useRole();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -59,11 +61,10 @@ function Navbar() {
     // Check if the setting is "Logout"
     if (setting === "Logout") {
       logOut(); // Call your logout function
-    } else if(setting === "Login") {
-      navigate("/login")
+    } else if (setting === "Login") {
+      navigate("/login");
     }
   };
-
 
   return (
     <AppBar
@@ -197,12 +198,21 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             {/* //display user name and role */}
             <Typography sx={{ pr: 2, display: { xs: "none", md: "initial" } }}>
-              <span className="font-bold text-xl dark:text-white">{user ? `Hi, ${user.displayName} (Host)` : ' '}</span>
+              <span className="font-bold text-xl dark:text-white capitalize">
+                {user ? `Hi, ${user.displayName} (${role && role})` : " "}
+              </span>
             </Typography>
             <Tooltip title="Open settings">
               {/* avatar part */}
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={user? user?.photoURL : "https://i.ibb.co/k34HkxR/istockphoto-1300845620-612x612.jpg"} />
+                <Avatar
+                  alt="Remy Sharp"
+                  src={
+                    user
+                      ? user?.photoURL
+                      : "https://i.ibb.co/k34HkxR/istockphoto-1300845620-612x612.jpg"
+                  }
+                />
               </IconButton>
 
               {/* dark Theme */}
@@ -227,10 +237,10 @@ function Navbar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting}  onClick={() => handleMenuClick(setting)} >
                   <Typography
                     textAlign="center"
-                    onClick={() => handleMenuClick(setting)}
+                    onClick={handleCloseUserMenu}
                   >
                     {setting}
                   </Typography>
