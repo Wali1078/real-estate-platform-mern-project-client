@@ -1,8 +1,33 @@
+import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
+import { getWishlistProperties } from "../../../../api/properties";
+import useAuth from "../../../../hooks/useAuth";
+import WishListCard from "./WishListCard";
+import Title from "../../../../components/Title/Title";
 
 const WishList = () => {
-  return (
-    <div>WishList</div>
-  )
-}
+  const { user, loading } = useAuth();
 
-export default WishList
+  const { data: wishlists = [], isLoading } = useQuery({
+    enabled: !loading && !!user?.email,
+    queryKey: ["wishlists"],
+    queryFn: async () =>await getWishlistProperties(user?.email),
+  });
+  console.log(wishlists);
+  return (
+    <div>
+      <Helmet>
+        <title>Wishlist</title>
+      </Helmet>
+      <Title name={`Wishlist`}/>
+      
+      <div className="grid lg:grid-cols-3 gap-4">
+        {
+          wishlists?.map(wish=><WishListCard key={wish._id} wishlist={wish}/>)
+        }
+      </div>
+    </div>
+  );
+};
+
+export default WishList;

@@ -1,7 +1,9 @@
 import toast from "react-hot-toast";
 import { addToWishList } from "../../../api/properties";
+import useAuth from "../../../hooks/useAuth";
 
 const SinglePropertyCard = ({ property }) => {
+    const {user} = useAuth()
   const {
     _id,
     title,
@@ -17,6 +19,8 @@ const SinglePropertyCard = ({ property }) => {
 
   const wishlistData = {
     oldId : _id,
+    userName:user?.displayName,
+    userEmail : user?.email,
     title,
     image,
     location,
@@ -27,7 +31,7 @@ const SinglePropertyCard = ({ property }) => {
     agentImg,
     desc,
   }
-const handleAddToWishlist =async(e,_id)=>{
+const handleAddToWishlist =async(e)=>{
     e.preventDefault();
     try {
        const data = await addToWishList(wishlistData)
@@ -80,7 +84,7 @@ const handleAddToWishlist =async(e,_id)=>{
             <p className="mt-2 text-gray-800 dark:text-gray-400 ">
              {desc}
             </p>
-            <p className="mt-3 inline-flex items-center gap-2 text-lg font-medium text-blue-500 hover:text-rose-700">
+            <p className="mt-3 inline-flex items-center gap-2 text-lg font-medium text-blue-500">
              Offer Price Between: ${priceRangeStart} to ${priceRangeEnd}
              
             </p>

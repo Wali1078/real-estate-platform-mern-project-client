@@ -12,6 +12,11 @@ export const getSingleProperty = async (id) => {
   };
   //add property to wishlist
 export const addToWishList = async (wishlistData) => {
-  const { data } = await axiosSecure.post("/single-property", wishlistData);
+  const { data } = await axiosSecure.post("/wishlist/single-property", wishlistData);
+  return data;
+};
+//fetch all wishlist properties
+export const getWishlistProperties = async (email) => {
+  const { data } = await axiosSecure(`/wishlist/properties/${email}`);
   return data;
 };
