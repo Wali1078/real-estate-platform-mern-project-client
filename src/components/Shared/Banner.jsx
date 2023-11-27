@@ -1,12 +1,12 @@
 
-const Banner = () => {
+const Banner = ({link}) => {
   return (
  
           <div className="relative">
         {/* banner */}
         <img
           className="h-[100vh] w-full"
-          src="https://i.ibb.co/pjt5nJY/pexels-pixabay-262405.jpg"
+          src={link}
           alt=""
         />
         {/* overlay */}

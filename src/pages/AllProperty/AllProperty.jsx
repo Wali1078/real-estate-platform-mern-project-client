@@ -5,6 +5,7 @@ import Loader from "../../components/Shared/Loader";
 import useProperties from "../../hooks/useProperties";
 import AdvertisementCard from "../../components/Home/AdvertisementCard/AdvertisementCard";
 import Banner from "../../components/Shared/Banner";
+import Footer from "../../components/Home/Footer/Footer";
 
 const AllProperty = () => {
   const [properties, isLoading] = useProperties();
@@ -22,7 +23,7 @@ const AllProperty = () => {
       </Helmet>
 
       {/* banner */}
-      <Banner />
+      <Banner link="https://i.ibb.co/pjt5nJY/pexels-pixabay-262405.jpg"/>
       {/* searchBox */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-[80vw] md:w-[50vw]">
         <form onSubmit={handleSearch}>
@@ -71,6 +72,7 @@ const AllProperty = () => {
           <AdvertisementCard key={property._id} property={property} />
         ))}
       </div>
+      <Footer/>
     </MyContainer>
   );
 };

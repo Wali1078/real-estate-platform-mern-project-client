@@ -21,6 +21,7 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ManageReviews from "../pages/Dashboard/Admin/ManageReviews/ManageReviews";
 import AdminRoute from "./AdminRoute";
 import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
+import { getSingleProperty } from "../api/properties";
 
 const MainRoutes = createBrowserRouter([
   {
@@ -47,6 +48,7 @@ const MainRoutes = createBrowserRouter([
             <PropertyDetails />
           </PrivateRoute>
         ),
+        loader: ({ params }) => getSingleProperty(params.id),
       },
     ],
   },
@@ -72,7 +74,11 @@ const MainRoutes = createBrowserRouter([
     children: [
       {
         index: true,
-        element:  <PrivateRoute><MyProfile /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyProfile />
+          </PrivateRoute>
+        ),
       },
       // user route
       {
@@ -94,7 +100,7 @@ const MainRoutes = createBrowserRouter([
       },
       {
         path: "added-properties",
-        element: <MyAddedProperties/>,
+        element: <MyAddedProperties />,
       },
       {
         path: "sold-properties",
@@ -111,13 +117,16 @@ const MainRoutes = createBrowserRouter([
       },
       {
         path: "manage-users",
-        element: <AdminRoute><ManageUsers /></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
       },
       {
         path: "manage-reviews",
         element: <ManageReviews />,
-      }
-      
+      },
     ],
   },
 ]);
