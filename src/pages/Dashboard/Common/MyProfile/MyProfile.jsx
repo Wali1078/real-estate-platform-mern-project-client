@@ -31,13 +31,15 @@ const MyProfile = () => {
         <div className="relative shadow mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">
           <img className="object-cover w-full h-full" src={user?.photoURL} />
         </div>
-        <div className="mt-16">
+        <div className="mt-16 ">
           <h1 className="text-2xl text-center font-semibold dark:text-black">
             {user?.displayName}
           </h1>
           <p className="text-lg text-gray-500 text-center ">{user?.email}</p>
+          <h3 className="text-center dark:text-black mt-2">
+            Last Login : {(local, time)}
+          </h3>
         </div>
-        <h3 className="text-center">Last Login : {(local, time)}</h3>
         {/* <h3>Registration Date : {time}</h3> */}
         <div className="flex flex-col mt-8 px-4 space-y-4">
           <button className="rounded-md  border-2 border-slate-400 px-5 py-2 text-sm font-medium text-slate-400 shadow-md transition duration-150 ease-in-out hover:bg-slate-400 hover:text-white hover:shadow-lg focus:outline-none focus:ring-0 active:bg-slate-600">

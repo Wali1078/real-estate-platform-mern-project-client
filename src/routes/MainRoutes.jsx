@@ -20,6 +20,7 @@ import ManageProperties from "../pages/Dashboard/Admin/ManageProperties/ManagePr
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ManageReviews from "../pages/Dashboard/Admin/ManageReviews/ManageReviews";
 import AdminRoute from "./AdminRoute";
+import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
 
 const MainRoutes = createBrowserRouter([
   {
@@ -36,6 +37,14 @@ const MainRoutes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AllProperty />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "property-details/:id",
+        element: (
+          <PrivateRoute>
+            <PropertyDetails />
           </PrivateRoute>
         ),
       },

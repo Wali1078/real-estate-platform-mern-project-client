@@ -76,7 +76,7 @@ const Sidebar = () => {
           </div>
           <hr />
           {/* Nav Items */}
-          <div className="flex flex-col justify-between flex-1 space-y-4 px-4">
+          <div className="mt-4 flex flex-col justify-between flex-1 space-y-4 px-4">
             <MenuWrapper
               icon={CgProfile}
               label={`My Profile`}
@@ -91,8 +91,8 @@ const Sidebar = () => {
           </div>
         </div>
 
-        <div className="flex  items-center justify-center w-full">
-          <hr />
+          {/* <hr /> */}
+        <div className="flex border-t items-center justify-center w-full">
          
           <button
             onClick={() => navigate("/")}
