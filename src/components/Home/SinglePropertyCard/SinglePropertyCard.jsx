@@ -1,3 +1,6 @@
+import toast from "react-hot-toast";
+import { addToWishList } from "../../../api/properties";
+
 const SinglePropertyCard = ({ property }) => {
   const {
     _id,
@@ -11,6 +14,33 @@ const SinglePropertyCard = ({ property }) => {
     agentImg,
     desc,
   } = property || {};
+
+  const wishlistData = {
+    oldId : _id,
+    title,
+    image,
+    location,
+    priceRangeStart,
+    priceRangeEnd,
+    verificationStatus,
+    agentName,
+    agentImg,
+    desc,
+  }
+const handleAddToWishlist =async(e,_id)=>{
+    e.preventDefault();
+    try {
+       const data = await addToWishList(wishlistData)
+       if(data.insertedId){
+        toast.success("Wishlist property Successful")
+       }else{
+        toast("Already Wishlisted")
+       }
+    } catch (error) {
+        toast.error(error.message)
+    }
+}
+
   return (
     <div>
       <div className="mt-4  rounded-t-xl bg-gray-100 shadow-2xl dark:bg-gray-900">
@@ -29,7 +59,7 @@ const SinglePropertyCard = ({ property }) => {
           <span className="text-base font-semibold"><span className="hidden md:block"> Location : </span>{location}</span>
          </div>
          <p className="absolute right-24 text-xl dark:text-blue-500 font-bold hidden md:block">Add to WishList</p>
-          <span className="absolute right-6 flex h-10 w-10 md:h-14 md:w-14 cursor-pointer items-center rounded-full bg-blue-500/40 p-1 text-blue-400 backdrop-blur-md transition duration-300 ease-out hover:bg-green-500 hover:text-white hover:shadow-lg hover:shadow-green-500">
+          <span onClick={(e)=>handleAddToWishlist(e,_id)} className="absolute right-6 flex h-10 w-10 md:h-14 md:w-14 cursor-pointer items-center rounded-full bg-blue-500/40 p-1 text-blue-400 backdrop-blur-md transition duration-300 ease-out hover:bg-green-500 hover:text-white hover:shadow-lg hover:shadow-green-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"

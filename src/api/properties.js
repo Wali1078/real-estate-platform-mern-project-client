@@ -10,3 +10,8 @@ export const getSingleProperty = async (id) => {
     const { data } = await axiosSecure(`/property/${id}`);
     return data;
   };
+  //add property to wishlist
+export const addToWishList = async (wishlistData) => {
+  const { data } = await axiosSecure.post("/single-property", wishlistData);
+  return data;
+};
