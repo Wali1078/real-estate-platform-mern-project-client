@@ -15,9 +15,9 @@ const [filteredData, setFilteredData] = useState();
 
   const handleSearch = (e) => {
     e.preventDefault();
-  const searchData = e.target.searchBox.value
+  const searchData = e.target.searchBox.value.toLowerCase()
   console.log(searchData);
-  const filteredData = properties?.filter(prop=>prop.title.includes(searchData))
+  const filteredData = properties?.filter(prop=>prop.title.toLowerCase().includes(searchData))
   setFilteredData(filteredData)
   };
 console.log(filteredData);

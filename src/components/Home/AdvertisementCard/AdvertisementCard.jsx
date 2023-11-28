@@ -27,14 +27,14 @@ const AdvertisementCard = ({ property }) => {
            Agent : {agentName ? agentName : "agent"}
             </div>
             <div className="mt-1 flex w-full">
-             <div>  <span className="dark:text-white">Property Status : </span><span className="font-base mr-1 cursor-pointer text-lg text-green-800 dark:text-green-400">
+             <div>  <span className="dark:text-white ">Property Status : </span><span className="font-base mr-1 cursor-pointer text-lg text-green-800 dark:text-green-400 capitalize">
               {verificationStatus}
               </span></div>
             </div>
           </div>
         </div>
         <div className="mx-3 mb-7 mt-1 px-2 text-sm font-medium text-gray-400">
-          <img className="w-full rounded" src={image} alt="Advertisement" />
+          <img className="w-full h-56 rounded" src={image} alt="Advertisement" />
         </div>
         <div className="mx-3 text-xl mb-2 px-2 font-semibold text-gray-600 dark:text-gray-300">
           Title : {title}

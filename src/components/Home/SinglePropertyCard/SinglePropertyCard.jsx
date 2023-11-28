@@ -91,7 +91,7 @@ const handleAddToWishlist =async(e)=>{
           </div>
           <div className="rounded-b-xl border-t bg-gray-100 py-3 px-4 dark:border-gray-700 dark:bg-gray-800 md:py-4 md:px-5">
             <p className="mt-1 text-md text-gray-500 dark:text-gray-500">
-              Verification Status : <span className="text-green-400">{verificationStatus} </span>
+              Verification Status : <span className="text-green-400 capitalize">{verificationStatus} </span>
               by Admin
             </p>
           </div>

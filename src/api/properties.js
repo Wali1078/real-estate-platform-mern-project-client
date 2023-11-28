@@ -1,5 +1,17 @@
 import axiosSecure from ".";
 
+// Add a property
+export const addProperty = async (propertyData) => {
+  const { data } = await axiosSecure.post(`/add-property`, propertyData);
+  return data;
+};
+
+//find property of agent which he adds
+export const getSingleProperty = async (email) => {
+  const { data } = await axiosSecure(`/added-property/${email}`);
+  return data;
+};
+
 //fetch all properties
 export const getAllProperties = async () => {
     const { data } = await axiosSecure("/properties");
