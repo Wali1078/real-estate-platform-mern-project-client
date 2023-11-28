@@ -6,15 +6,21 @@ import useProperties from "../../hooks/useProperties";
 import AdvertisementCard from "../../components/Home/AdvertisementCard/AdvertisementCard";
 import Banner from "../../components/Shared/Banner";
 import Footer from "../../components/Home/Footer/Footer";
+import { useState } from "react";
 
 const AllProperty = () => {
   const [properties, isLoading] = useProperties();
   console.log(properties);
+const [filteredData, setFilteredData] = useState();
 
   const handleSearch = (e) => {
     e.preventDefault();
+  const searchData = e.target.searchBox.value
+  console.log(searchData);
+  const filteredData = properties?.filter(prop=>prop.title.includes(searchData))
+  setFilteredData(filteredData)
   };
-
+console.log(filteredData);
   if (isLoading) return <Loader />;
   return (
     <MyContainer>
@@ -53,7 +59,8 @@ const AllProperty = () => {
               id="default-search"
               className="block text-xl font-semibold w-full p-4 ps-10  text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search Properties by Title"
-              required
+name="searchBox"
+        
             />
             <button
               type="submit"
@@ -68,9 +75,17 @@ const AllProperty = () => {
         <Title name={`All Property`}></Title>
       </div>
       <div className="grid lg:grid-cols-4 gap-4 mx-auto">
-        {properties?.map((property) => (
+        {
+       filteredData?.length > 0 ?
+          filteredData?.map((property) => (
           <AdvertisementCard key={property._id} property={property} />
-        ))}
+        ))
+          :
+          properties?.map((property) => (
+          <AdvertisementCard key={property._id} property={property} />
+        ))
+        
+        }
       </div>
       <Footer/>
     </MyContainer>
