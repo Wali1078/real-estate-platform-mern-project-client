@@ -21,8 +21,9 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ManageReviews from "../pages/Dashboard/Admin/ManageReviews/ManageReviews";
 import AdminRoute from "./AdminRoute";
 import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
-import { getSingleProperty } from "../api/properties";
+import { getSingleProperty, getSingleWishlist } from "../api/properties";
 import UpdateProperty from "../pages/Dashboard/Agent/UpdateProperty/UpdateProperty";
+import MakeAnOffer from "../pages/Dashboard/User/MakeAnOffer/MakeAnOffer"
 
 const MainRoutes = createBrowserRouter([
   {
@@ -85,6 +86,11 @@ const MainRoutes = createBrowserRouter([
       {
         path: "wishlist",
         element: <WishList />,
+      },
+      {
+        path: "wishlist/make-offer/:id",
+        element: <MakeAnOffer />,
+        loader : ({params})=>getSingleWishlist(params.id)
       },
       {
         path: "property-bought",

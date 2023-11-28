@@ -44,3 +44,12 @@ export const getWishlistProperties = async (email) => {
   const { data } = await axiosSecure(`/wishlist/properties/${email}`);
   return data;
 };
+//fetch single wishlist by id
+export const getSingleWishlist = async (id) => {
+  const { data } = await axiosSecure(`/wishlist/single-property/${id}`);
+  return data;
+};
+export const updateSingleWishlist = async (id,updatingData) => {
+  const { data } = await axiosSecure.put(`/wishlist/single-property/update/${id}`,updatingData);
+  return data;
+};
