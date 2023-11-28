@@ -1,5 +1,5 @@
 import axiosSecure from ".";
-
+// for guest
 // Add a property
 export const addProperty = async (propertyData) => {
   const { data } = await axiosSecure.post(`/add-property`, propertyData);
@@ -7,11 +7,19 @@ export const addProperty = async (propertyData) => {
 };
 
 //find property of agent which he adds
-export const getSingleProperty = async (email) => {
+export const getAgentProperty = async (email) => {
   const { data } = await axiosSecure(`/added-property/${email}`);
   return data;
 };
+//update a property
 
+//delete a property
+export const deleteProperty = async (id) => {
+  const { data } = await axiosSecure.delete(`/delete-property/${id}`);
+  return data;
+};
+
+//for all users
 //fetch all properties
 export const getAllProperties = async () => {
     const { data } = await axiosSecure("/properties");

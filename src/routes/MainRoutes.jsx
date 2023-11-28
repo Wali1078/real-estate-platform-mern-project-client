@@ -22,6 +22,7 @@ import ManageReviews from "../pages/Dashboard/Admin/ManageReviews/ManageReviews"
 import AdminRoute from "./AdminRoute";
 import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
 import { getSingleProperty } from "../api/properties";
+import UpdateProperty from "../pages/Dashboard/Agent/UpdateProperty/UpdateProperty";
 
 const MainRoutes = createBrowserRouter([
   {
@@ -101,6 +102,11 @@ const MainRoutes = createBrowserRouter([
       {
         path: "added-properties",
         element: <MyAddedProperties />,
+      },
+      {
+        path: "update-property/:id",
+        element: <UpdateProperty/>,
+        loader: ({ params }) => getSingleProperty(params.id),
       },
       {
         path: "sold-properties",

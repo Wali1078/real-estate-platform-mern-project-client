@@ -11,7 +11,7 @@ import Title from "../../../../components/Title/Title";
 const AddProperty = () => {
   const {user} = useAuth()
   const [isLoading, setIsLoading] = useState(false)
-  const [uploadButtonText, setUploadButtonText] = useState('Upload Image')
+  const [uploadButtonText, setUploadButtonText] = useState('Upload Image (**Required**)')
   const navigate = useNavigate()
     // Handle Image button text
     const handleImageChange = image => {
@@ -26,7 +26,7 @@ const AddProperty = () => {
   
     if (priceStart >= priceEnd) {
       // Display an error message, prevent form submission, or handle the error in your desired way
-      console.error("'Price Start From' must be less than 'Price Ends At'");
+      toast.error("'Price Start From' must be less than 'Price Ends At'");
       return;
     }
     const form = e.target
@@ -60,7 +60,8 @@ const AddProperty = () => {
       console.log(data)
       setUploadButtonText('Uploaded!')
       toast.success('Property Added!')
-      navigate('/dashboard/added-properties')
+      form.reset()
+      // navigate('/dashboard/added-properties')
     } catch (err) {
       console.log(err)
       toast.error(err.message)
