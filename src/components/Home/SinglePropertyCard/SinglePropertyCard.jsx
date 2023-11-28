@@ -4,6 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 
 const SinglePropertyCard = ({ property }) => {
     const {user} = useAuth()
+console.log(property);
   const {
     _id,
     title,
@@ -13,6 +14,7 @@ const SinglePropertyCard = ({ property }) => {
     priceRangeEnd,
     verificationStatus,
     agentName,
+    agentEmail,
     agentImg,
     desc,
   } = property || {};
@@ -28,6 +30,7 @@ const SinglePropertyCard = ({ property }) => {
     priceRangeEnd,
     verificationStatus,
     agentName,
+    agentEmail,
     agentImg,
     desc,
   }

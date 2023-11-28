@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../../../hooks/useAuth";
+import { getUserBookings } from "../../../../api/bookings";
+import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+import { deleteWishlist } from "../../../../api/properties";
 
-const WishListCard = ({ wishlist, isWishlist, isPropertyBought }) => {
+const WishListCard = ({ wishlist,refetch, isWishlist, isPropertyBought }) => {
+  const {user,loading} = useAuth()
   console.log(Object.keys(wishlist).join(","));
   const {
     _id,
@@ -17,8 +23,31 @@ const WishListCard = ({ wishlist, isWishlist, isPropertyBought }) => {
     agentName,
     agentImg,
     status,
-    desc,
+    transactionId
   } = wishlist || {};
+
+  const { data: bookingData = [], isLoading } = useQuery({
+    enabled: !loading && !!user?.email,
+    queryKey: ["bookingData"],
+    queryFn: async () =>await getUserBookings(user?.email),
+  });
+
+  console.log(bookingData);
+
+
+const handleRemoveFromWishlist =async()=>{
+try {
+  const data = await deleteWishlist(_id)
+  console.log(data);
+  if(data.deletedCount >0){
+    toast.success("Wishlist deleted successfully")
+    refetch()
+  }
+} catch (error) {
+  toast.error(error.message);
+}
+}
+
   return (
     <div>
       <div className="my-4  rounded-lg bg-gray-200 shadow dark:bg-gray-900">
@@ -79,7 +108,8 @@ const WishListCard = ({ wishlist, isWishlist, isPropertyBought }) => {
             <span>
               <button
                 type="button"
-                className="rounded-md  border-2 border-red-400 px-5 py-2 text-sm font-medium text-red-400 shadow-md transition duration-150 ease-in-out hover:bg-red-400 hover:text-white hover:shadow-lg focus:outline-none focus:ring-0 active:bg-red-600"
+                onClick={handleRemoveFromWishlist}
+                className="rounded-md  border-2 border-blue-400 px-5 py-2 text-sm font-medium text-blue-400 shadow-md transition duration-150 ease-in-out hover:bg-blue-400 hover:text-white hover:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600"
               >
                 Remove from Wishlist
               </button>
@@ -99,7 +129,7 @@ const WishListCard = ({ wishlist, isWishlist, isPropertyBought }) => {
             </Link>
           </div>
         )}
-        {isPropertyBought && !(status === "accepted") && !(status === "rejected")   && (
+        {isPropertyBought && !(status === "accepted") && !(status === "rejected") && !(status === "bought")  && (
           <div className="text-center pb-5 ">
             <span>
               <span
@@ -119,6 +149,18 @@ const WishListCard = ({ wishlist, isWishlist, isPropertyBought }) => {
                 className="rounded-md  border-2 border-red-500 px-5 py-2 text-sm font-medium text-red-500 shadow-md transition duration-150 ease-in-out   "
               >
                Rejected
+              </span>
+            </span>
+          </div>
+        )}
+        {isPropertyBought && (status === "bought")  && (
+          <div className="text-center pb-5 ">
+            <span>
+              <span
+                type="button"
+                className="rounded-md  border-2 border-blue-500 px-5 py-2 text-sm font-medium text-blue-500 shadow-md transition duration-150 ease-in-out   "
+              >
+        Txn id : {transactionId}
               </span>
             </span>
           </div>

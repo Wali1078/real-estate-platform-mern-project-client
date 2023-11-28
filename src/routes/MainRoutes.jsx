@@ -109,6 +109,7 @@ const MainRoutes = createBrowserRouter([
             <PropertyBought />
           </PrivateRoute>
         ),
+        
       },
       {
         path: "/dashboard/property-bought/payment/:id",

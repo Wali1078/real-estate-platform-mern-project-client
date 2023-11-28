@@ -72,3 +72,9 @@ export const getUserWishlistProperties = async (email) => {
   const { data } = await axiosSecure(`/user/wishlist/properties/${email}`);
   return data;
 };
+
+//delete wishlist data
+export const deleteWishlist = async (id) => {
+  const { data } = await axiosSecure.delete(`/wishlist/single-property/delete/${id}`);
+  return data;
+};

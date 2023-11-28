@@ -8,7 +8,7 @@ import Title from "../../../../components/Title/Title";
 const WishList = () => {
   const { user, loading } = useAuth();
 const isWishlist = true
-  const { data: wishlists = [], isLoading } = useQuery({
+  const { data: wishlists = [], isLoading,refetch } = useQuery({
     enabled: !loading && !!user?.email,
     queryKey: ["wishlists"],
     queryFn: async () =>await getWishlistProperties(user?.email),
@@ -23,7 +23,7 @@ const isWishlist = true
       
       <div className="grid lg:grid-cols-3 gap-4">
         {
-          wishlists?.map(wish=><WishListCard key={wish._id} wishlist={wish} isWishlist={isWishlist}/>)
+          wishlists?.map(wish=><WishListCard key={wish._id} wishlist={wish} refetch={refetch} isWishlist={isWishlist}/>)
         }
       </div>
     </div>

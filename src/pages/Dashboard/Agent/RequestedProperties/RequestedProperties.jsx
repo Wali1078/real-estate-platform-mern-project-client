@@ -6,8 +6,8 @@ import { getRequestedProperty } from "../../../../api/properties";
 import WishlistDataRow from "../../../../components/TableDataRow/WishlistDataRow";
 import Loader from "../../../../components/Shared/Loader";
 
-const RequestedProperties = () => {
 
+const RequestedProperties = () => {
 
   const { user, loading } = useAuth();
   const {
@@ -55,10 +55,10 @@ if(isLoading) return <Loader/>
                 Status
                 </th>
                 <th scope="col" className="px-6 py-3">
-               Accept
+               Accept Button
                 </th>
                 <th scope="col" className="px-6 py-3">
-                Reject
+                Reject Button
                 </th>
               </tr>
             </thead>

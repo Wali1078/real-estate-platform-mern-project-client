@@ -12,7 +12,19 @@ export const saveBookingInfo = async (paymentInfo) => {
   return data;
 };
 // update room status after booking in db
-export const updateStatus = async (id, status) => {
-    const { data } = await axiosSecure.patch(`/booking/status/${id}`, { status });
+export const updateStatus = async (id, bought) => {
+    const { data } = await axiosSecure.patch(`/booking/status/${id}`, { status:bought });
     return data;
   };
+  
+  // get all bookings for a guest by email
+export const getUserBookings = async (email) => {
+    const { data } = await axiosSecure(`/bookings/user?email=${email}`);
+    return data;
+  };
+  // get all bookings for a host by email
+  export const getHostBookings = async (email) => {
+    const { data } = await axiosSecure(`/bookings/agent?email=${email}`);
+    return data;
+  };
+  

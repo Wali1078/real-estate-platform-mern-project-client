@@ -77,7 +77,7 @@ const WishlistDataRow = ({ data, idx, refetch }) => {
         )}
       </td>
       <td className="px-6 py-4">
-        {((data?.status === "rejected") || (data.status === "accepted")) ? 
+        {((data?.status === "rejected") || (data.status === "accepted") || (data.status === "bought"))  ? 
           <div className="cursor-none font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border">
          Disabled
           </div>
