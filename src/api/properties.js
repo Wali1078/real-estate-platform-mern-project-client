@@ -62,7 +62,13 @@ export const getSingleWishlist = async (id) => {
   const { data } = await axiosSecure(`/wishlist/single-property/${id}`);
   return data;
 };
+   //update wishlist after make an offer
 export const updateSingleWishlist = async (id,updatingData) => {
   const { data } = await axiosSecure.put(`/wishlist/single-property/update/${id}`,updatingData);
+  return data;
+};
+//get wishlist by email for property bought
+export const getUserWishlistProperties = async (email) => {
+  const { data } = await axiosSecure(`/user/wishlist/properties/${email}`);
   return data;
 };

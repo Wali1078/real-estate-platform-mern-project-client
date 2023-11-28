@@ -25,6 +25,7 @@ import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
 import { getSingleProperty, getSingleWishlist } from "../api/properties";
 import UpdateProperty from "../pages/Dashboard/Agent/UpdateProperty/UpdateProperty";
 import MakeAnOffer from "../pages/Dashboard/User/MakeAnOffer/MakeAnOffer";
+import Payment from "../pages/Dashboard/User/Payment/Payment";
 
 const MainRoutes = createBrowserRouter([
   {
@@ -108,6 +109,15 @@ const MainRoutes = createBrowserRouter([
             <PropertyBought />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/dashboard/property-bought/payment/:id",
+        element: (
+          <PrivateRoute>
+            <Payment />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => getSingleWishlist(params.id),
       },
       {
         path: "my-reviews",
