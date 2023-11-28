@@ -22,6 +22,19 @@ export const deleteProperty = async (id) => {
   const { data } = await axiosSecure.delete(`/delete-property/${id}`);
   return data;
 };
+//for agent
+//find requested property from wishlistCollection
+export const getRequestedProperty = async () => {
+  const { data } = await axiosSecure(`/wishlist/properties`);
+  return data;
+};
+
+// changed requested properties status
+export const changeWishlistStatus = async (id) => {
+  const { data } = await axiosSecure.patch(`/wishlist/properties/${id}`,{status:"accepted"});
+  return data;
+};
+
 
 //for all users
 //fetch all properties
