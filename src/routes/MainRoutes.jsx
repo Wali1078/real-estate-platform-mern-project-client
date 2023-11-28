@@ -20,10 +20,11 @@ import ManageProperties from "../pages/Dashboard/Admin/ManageProperties/ManagePr
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ManageReviews from "../pages/Dashboard/Admin/ManageReviews/ManageReviews";
 import AdminRoute from "./AdminRoute";
+import AgentRoute from "./AgentRoute";
 import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
 import { getSingleProperty, getSingleWishlist } from "../api/properties";
 import UpdateProperty from "../pages/Dashboard/Agent/UpdateProperty/UpdateProperty";
-import MakeAnOffer from "../pages/Dashboard/User/MakeAnOffer/MakeAnOffer"
+import MakeAnOffer from "../pages/Dashboard/User/MakeAnOffer/MakeAnOffer";
 
 const MainRoutes = createBrowserRouter([
   {
@@ -85,59 +86,119 @@ const MainRoutes = createBrowserRouter([
       // user route
       {
         path: "wishlist",
-        element: <WishList />,
+        element: (
+          <PrivateRoute>
+            <WishList />
+          </PrivateRoute>
+        ),
       },
       {
         path: "wishlist/make-offer/:id",
-        element: <MakeAnOffer />,
-        loader : ({params})=>getSingleWishlist(params.id)
+        element: (
+          <PrivateRoute>
+            <MakeAnOffer />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => getSingleWishlist(params.id),
       },
       {
         path: "property-bought",
-        element: <PropertyBought />,
+        element: (
+          <PrivateRoute>
+            <PropertyBought />
+          </PrivateRoute>
+        ),
       },
       {
         path: "my-reviews",
-        element: <MyReviews />,
+        element: (
+          <PrivateRoute>
+            <MyReviews />
+          </PrivateRoute>
+        ),
       },
       // agent route
       {
         path: "add-property",
-        element: <AddProperty />,
+        element: (
+          <PrivateRoute>
+            <AgentRoute>
+              <AddProperty />
+            </AgentRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "added-properties",
-        element: <MyAddedProperties />,
+        element: (
+          <PrivateRoute>
+            <AgentRoute>
+              <MyAddedProperties />
+            </AgentRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "update-property/:id",
-        element: <UpdateProperty/>,
+        element: (
+          <PrivateRoute>
+            <AgentRoute>
+              <UpdateProperty />
+            </AgentRoute>
+          </PrivateRoute>
+        ),
         loader: ({ params }) => getSingleProperty(params.id),
       },
       {
         path: "sold-properties",
-        element: <MySoldProperties />,
+        element: (
+          <PrivateRoute>
+            <AgentRoute>
+              <MySoldProperties />
+            </AgentRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "requested-properties",
-        element: <RequestedProperties />,
+        element: (
+          <PrivateRoute>
+            <AgentRoute>
+              <RequestedProperties />
+            </AgentRoute>
+          </PrivateRoute>
+        ),
       },
       // admin route
       {
         path: "manage-properties",
-        element: <ManageProperties />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <ManageProperties />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "manage-users",
         element: (
-          <AdminRoute>
-            <ManageUsers />
-          </AdminRoute>
+          <PrivateRoute>
+            <AdminRoute>
+              <ManageUsers />
+            </AdminRoute>
+          </PrivateRoute>
         ),
       },
       {
         path: "manage-reviews",
-        element: <ManageReviews />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <ManageReviews />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
     ],
   },

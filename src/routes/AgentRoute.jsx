@@ -6,7 +6,7 @@ const AgentRoute = ({ children }) => {
   const [role, isLoading] = useRole();
 
   if (isLoading) return <Loader />;
-  if (role === "host") return children;
+  if (role === "agent") return children;
   return <Navigate to="/dashboard" />;
 };
 

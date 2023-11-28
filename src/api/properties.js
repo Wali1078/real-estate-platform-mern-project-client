@@ -30,8 +30,8 @@ export const getRequestedProperty = async () => {
 };
 
 // changed requested properties status
-export const changeWishlistStatus = async (id) => {
-  const { data } = await axiosSecure.patch(`/wishlist/properties/${id}`,{status:"accepted"});
+export const changeWishlistStatus = async (id,myData) => {
+  const { data } = await axiosSecure.patch(`/wishlist/properties/${id}`,myData);
   return data;
 };
 
