@@ -34,7 +34,12 @@ export const changeWishlistStatus = async (id,myData) => {
   const { data } = await axiosSecure.patch(`/wishlist/properties/${id}`,myData);
   return data;
 };
-
+//admin
+//update verification status
+export const updateProperties = async (id,status) => {
+  const { data } = await axiosSecure.patch(`/properties/update/${id}`,{verificationStatus:status});
+  return data;
+};
 
 //for all users
 //fetch all properties

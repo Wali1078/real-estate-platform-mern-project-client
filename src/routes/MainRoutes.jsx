@@ -22,7 +22,7 @@ import ManageReviews from "../pages/Dashboard/Admin/ManageReviews/ManageReviews"
 import AdminRoute from "./AdminRoute";
 import AgentRoute from "./AgentRoute";
 import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
-import { getSingleProperty, getSingleWishlist } from "../api/properties";
+import {  getSingleProperty, getSingleWishlist } from "../api/properties";
 import UpdateProperty from "../pages/Dashboard/Agent/UpdateProperty/UpdateProperty";
 import MakeAnOffer from "../pages/Dashboard/User/MakeAnOffer/MakeAnOffer";
 import Payment from "../pages/Dashboard/User/Payment/Payment";

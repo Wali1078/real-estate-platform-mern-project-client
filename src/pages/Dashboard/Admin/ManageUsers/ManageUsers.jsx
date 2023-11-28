@@ -3,13 +3,14 @@ import { getAllUsers } from "../../../../api/auth";
 import { Helmet } from "react-helmet-async";
 import UserDataRow from "../../../../components/TableDataRow/UserDataRow";
 import Title from "../../../../components/Title/Title";
+import Loader from "../../../../components/Shared/Loader";
 
 const ManageUsers = () => {
-  const { data: users = [], refetch } = useQuery({
+  const { data: users = [],isLoading, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => await getAllUsers(),
   });
-
+if(isLoading) return <Loader/>
   return (
     <div className="container mx-auto px-4 sm:px-8">
       <Helmet>

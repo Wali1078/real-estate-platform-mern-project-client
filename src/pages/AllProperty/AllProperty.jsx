@@ -10,17 +10,19 @@ import { useState } from "react";
 
 const AllProperty = () => {
   const [properties, isLoading] = useProperties();
-  console.log(properties);
+  const removeRejectedPropertied = properties.filter(prop=>prop.verificationStatus!=="rejected");
+  // console.log(removeRejectedPropertied);
+  // console.log(properties);
 const [filteredData, setFilteredData] = useState();
 
   const handleSearch = (e) => {
     e.preventDefault();
   const searchData = e.target.searchBox.value.toLowerCase()
   console.log(searchData);
-  const filteredData = properties?.filter(prop=>prop.title.toLowerCase().includes(searchData))
+  const filteredData = removeRejectedPropertied?.filter(prop=>prop.title.toLowerCase().includes(searchData))
   setFilteredData(filteredData)
   };
-console.log(filteredData);
+// console.log(filteredData);
   if (isLoading) return <Loader />;
   return (
     <MyContainer>
@@ -76,12 +78,13 @@ name="searchBox"
       </div>
       <div className="grid lg:grid-cols-4 gap-4 mx-auto">
         {
+          
        filteredData?.length > 0 ?
           filteredData?.map((property) => (
           <AdvertisementCard key={property._id} property={property} />
         ))
           :
-          properties?.map((property) => (
+          removeRejectedPropertied?.map((property) => (
           <AdvertisementCard key={property._id} property={property} />
         ))
         
