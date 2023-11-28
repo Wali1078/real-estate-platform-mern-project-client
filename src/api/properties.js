@@ -11,7 +11,11 @@ export const getAgentProperty = async (email) => {
   const { data } = await axiosSecure(`/added-property/${email}`);
   return data;
 };
-//update a property
+//update a property by agent who adds it
+export const updateProperty = async (id,updatedData) => {
+  const { data } = await axiosSecure.put(`/update-property/${id}`,updatedData);
+  return data;
+};
 
 //delete a property
 export const deleteProperty = async (id) => {

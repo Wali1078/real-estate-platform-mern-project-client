@@ -58,10 +58,12 @@ const AddProperty = () => {
     try {
       const data = await addProperty(propertyData)
       console.log(data)
-      setUploadButtonText('Uploaded!')
-      toast.success('Property Added!')
+     setUploadButtonText('Uploaded!')
+     if(data.insertedId){
+       toast.success('Property Added!')
+     }
       form.reset()
-      // navigate('/dashboard/added-properties')
+      navigate('/dashboard/added-properties')
     } catch (err) {
       console.log(err)
       toast.error(err.message)

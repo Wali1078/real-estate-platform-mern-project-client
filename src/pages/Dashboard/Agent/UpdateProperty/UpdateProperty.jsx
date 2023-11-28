@@ -7,15 +7,17 @@ import Loader from "../../../../components/Shared/Loader";
 import Title from "../../../../components/Title/Title";
 import { TbLoader3 } from "react-icons/tb";
 import { useQuery } from "@tanstack/react-query";
-import { getSingleProperty } from "../../../../api/properties";
+import { getSingleProperty, updateProperty } from "../../../../api/properties";
+import { uploadImage } from "../../../../api/utils";
 
 const UpdateProperty = () => {
   const { user, loading } = useAuth();
+  const [isLoading, setIsLoading] = useState(false)
   const { id } = useParams();
   const data = useLoaderData()
   console.log(data);
   const [uploadButtonText, setUploadButtonText] = useState(
-    "Upload Image (**Required**) "
+    "Upload Image (**Required**)"
   );
   const navigate = useNavigate();
 
@@ -39,6 +41,7 @@ const UpdateProperty = () => {
 
   const handleUpdateProperty = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
     const priceStart = parseFloat(e.target.priceStart.value);
     const priceEnd = parseFloat(e.target.priceEnd.value);
 
@@ -60,36 +63,39 @@ const UpdateProperty = () => {
     const agentEmail = user?.email;
 
     //upload image to db
-    // const image_url = await uploadImage(image)
-    // console.log(image_url);
+    const image_url = await uploadImage(image)
+    console.log(image_url);
     // console.log(location,title,priceStart,priceEnd,description,image);
-    const propertyData = {
+    const updatedData = {
       location,
       title,
       priceRangeStart: priceStartFrom,
       priceRangeEnd: priceEndAt,
       desc: description,
-      // image: image_url?.data?.display_url,
+      image: image_url?.data?.display_url,
       agentName,
       agentImg,
       agentEmail,
       verificationStatus: "not verified",
     };
     try {
-      // const data = await addProperty(propertyData)
+      const data = await updateProperty(_id,updatedData)
       // console.log(data)
       setUploadButtonText("Uploaded!");
-      toast.success("Property Added!");
+      if(data.insertedId){
+        toast.success('Property Updated!')
+      }
       navigate("/dashboard/added-properties");
     } catch (err) {
       console.log(err);
       toast.error(err.message);
     } finally {
+      setIsLoading(false)
     }
 
     console.table(propertyData);
   };
-  // if (isLoading) return <Loader />;
+
   return (
     <div>
       <div>
@@ -222,10 +228,11 @@ const UpdateProperty = () => {
               type="submit"
               className="w-full p-6 mt-5 text-center font-medium  shadow-md 
             rounded-md  border-2 border-slate-400 px-5 py-3 text-slate-400 transition duration-150 ease-in-out hover:bg-slate-400 hover:text-white hover:shadow-lg focus:outline-none focus:ring-0 active:bg-slate-600 dark:text-gray-200 text-lg"
-            >
-             
-                Update Property
-             
+            > {isLoading ? (
+                <TbLoader3 size={30} className='animate-spin m-auto' />
+              ) : (
+                'Update Property'
+              )}
             </button>
           </form>
         </div>
