@@ -3,8 +3,11 @@ import { Fragment, useState } from "react";
 import { addReview } from "../../api/review";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import useSingleProperties from "../../hooks/useSingleProperty";
+import { useParams } from "react-router-dom";
 
 export default function AddReviewThroughModal({property}) {
+  
 const {user} = useAuth()
   const {
     _id,
@@ -19,7 +22,7 @@ const {user} = useAuth()
     agentImg,
     desc,
   } = property || {};
- console.log(property);
+//  console.log(property);
   let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
@@ -61,7 +64,7 @@ closeModal()
 
   return (
     <>
-      <div className=" inset-0 flex items-center justify-center">
+      <div className=" inset-0 flex items-center justify-center ">
         <button
           type="button"
           onClick={openModal}
@@ -85,7 +88,7 @@ closeModal()
             <div className="fixed inset-0 bg-black/25" />
           </Transition.Child>
 
-          <div className="fixed inset-0 overflow-y-auto">
+          <div className="fixed inset-0 overflow-y-auto ">
             <div className="flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
@@ -96,10 +99,10 @@ closeModal()
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-gray-500 ">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg text-center font-medium leading-6 text-gray-900"
+                    className="text-lg text-center font-medium leading-6 text-gray-900 dark:text-white"
                   >
                     Add a Review
                   </Dialog.Title>
@@ -107,7 +110,7 @@ closeModal()
                   <div className="mt-6">
                       <textarea
                         name="myTextarea"
-                        className="w-full h-32 p-4 border-blue-800"
+                        className="w-full h-32 p-4 dark:bg-stone-700 text-white"
                         placeholder="Your message here"
                         minLength="10"
                         maxLength="500"

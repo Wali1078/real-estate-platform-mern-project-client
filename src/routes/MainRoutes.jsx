@@ -52,7 +52,7 @@ const MainRoutes = createBrowserRouter([
             <PropertyDetails />
           </PrivateRoute>
         ),
-        loader: ({ params }) => getSingleProperty(params.id),
+        // loader: ({ params }) => getSingleProperty(params.id),
       },
     ],
   },

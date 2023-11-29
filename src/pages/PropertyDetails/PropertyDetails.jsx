@@ -8,14 +8,15 @@ import Footer from "../../components/Home/Footer/Footer";
 import ReviewSection from "../../components/ReviewSection/ReviewSection";
 import useSingleProperties from "../../hooks/useSingleProperty";
 
-
 const PropertyDetails = () => {
-  const data = useLoaderData();
+  // const data = useLoaderData();
   // console.log(data);
-/* const id = useParams()
-console.log(id);
-const [singleProperty, isLoading, refetch] = useSingleProperties(id)
-console.log(singleProperty); */
+
+  const { id } = useParams();
+  const [singleProperty, isLoading, refetch] = useSingleProperties(id);
+  console.log(singleProperty);
+
+  
   return (
     <MyContainer>
       <Helmet>
@@ -29,12 +30,12 @@ console.log(singleProperty); */
 
       <Title name={`Property Details `}></Title>
       <div>
-        <SinglePropertyCard property={data} />
+        <SinglePropertyCard property={singleProperty} />
       </div>
-    <div>
-      <ReviewSection property={data}/>
-    </div>
-    <hr className=""/>
+      <div>
+        <ReviewSection property={singleProperty} />
+      </div>
+    
       <Footer />
     </MyContainer>
   );
