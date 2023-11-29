@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import useSingleProperties from "../../hooks/useSingleProperty";
 import { useParams } from "react-router-dom";
 
-export default function AddReviewThroughModal({property}) {
+export default function AddReviewThroughModal({property,refetch}) {
   
 const {user} = useAuth()
   const {
@@ -14,13 +14,13 @@ const {user} = useAuth()
     title,
     image,
     location,
-    priceRangeStart,
-    priceRangeEnd,
-    verificationStatus,
+    // priceRangeStart,
+    // priceRangeEnd,
+    // verificationStatus,
     agentName,
     agentEmail,
     agentImg,
-    desc,
+    // desc,
   } = property || {};
 //  console.log(property);
   let [isOpen, setIsOpen] = useState(false);
@@ -55,6 +55,7 @@ try {
 console.log(data);
 if(data.insertedId){
 toast.success("Review added successfully")
+refetch()
 closeModal()
 }
 } catch (error) {
