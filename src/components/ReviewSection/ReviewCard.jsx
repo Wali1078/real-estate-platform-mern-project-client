@@ -3,7 +3,7 @@ import MyContainer from "../Shared/MyContainer";
 import toast from "react-hot-toast";
 import { removeReview } from "../../api/review";
 
-const ReviewCard = ({ reviews, idx ,isMyReview,refetch}) => {
+const ReviewCard = ({ reviews, idx ,isMyReview,isManageReview,refetch}) => {
 
 const handleRemoveReview =async(e)=>{
   e.preventDefault()
@@ -39,7 +39,7 @@ const handleRemoveReview =async(e)=>{
             className="text-xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 "
             
           >
-            {reviews.title}
+            Property Title : {reviews.title}
           </h1>
           <textarea className="mt-2 w-full border px-4  dark:bg-gray-500 text-gray-600 dark:text-gray-300" defaultValue=  {reviews.review}>
           
@@ -47,14 +47,14 @@ const handleRemoveReview =async(e)=>{
         </div>
 
         <div className="flex items-center justify-between mt-4">
-          <a
-            href="#"
-            className="text-blue-600 dark:text-blue-400 hover:underline"
+          <p
+         
+            className="text-white dark:text-[#1F2937] "
             tabIndex="0"
             role="link"
           >
             Read more
-          </a>
+          </p>
 
           <div className="flex items-center">
             <img
@@ -70,7 +70,8 @@ const handleRemoveReview =async(e)=>{
             </p>
           </div>
         </div>
-    { isMyReview &&  <button onClick={handleRemoveReview} className="absolute top-0 right-0 border bg-red-700 border-red-700 p-2 text-red-700 rounded-lg"><RiDeleteBinFill className="text-white"/></button>}
+    { isMyReview && <button onClick={handleRemoveReview} className="absolute top-0 right-0 border bg-red-700 border-red-700 p-2 text-red-700 rounded-lg"><RiDeleteBinFill className="text-white"/></button>}
+    { isManageReview && <button onClick={handleRemoveReview} className="absolute top-0 right-0 border bg-red-700 border-red-700 p-2 text-red-700 rounded-lg"><RiDeleteBinFill className="text-white"/></button>}
       </div>
     </MyContainer>
   );

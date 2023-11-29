@@ -5,6 +5,11 @@ import axiosSecure from ".";
     const { data } = await axiosSecure.post("/property/add-review", reviewData);
     return data;
   };
+  //find all user review 
+  export const getAllReviews = async () => {
+    const { data } = await axiosSecure(`/all-user/review`);
+    return data;
+  };
   //find user review by oldId
   export const getReviews = async (id) => {
     const { data } = await axiosSecure(`/property/get-review/${id}`);
@@ -18,6 +23,6 @@ import axiosSecure from ".";
   
    //delete user review by user id
    export const removeReview = async (id) => {
-    const { data } = await axiosSecure(`/property/user/delete-review/${id}`);
+    const { data } = await axiosSecure.delete(`/property/user/delete-review/${id}`);
     return data;
   };
