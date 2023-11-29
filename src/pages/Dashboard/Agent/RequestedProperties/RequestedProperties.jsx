@@ -17,7 +17,7 @@ const RequestedProperties = () => {
   } = useQuery({
     enabled: !loading && !!user?.email,
     queryKey: ["requestedPropertiesData"],
-    queryFn: async () => await getRequestedProperty(),
+    queryFn: async () => await getRequestedProperty(user?.email),
   });
 
 if(isLoading) return <Loader/>

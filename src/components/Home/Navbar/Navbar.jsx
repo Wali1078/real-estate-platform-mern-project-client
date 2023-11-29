@@ -64,6 +64,9 @@ function Navbar() {
     } else if (setting === "Login") {
       navigate("/login");
     }
+     else if (setting === "Profile") {
+      navigate("/dashboard");
+    }
   };
 
   return (

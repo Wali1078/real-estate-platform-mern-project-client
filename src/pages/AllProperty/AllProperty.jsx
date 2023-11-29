@@ -7,11 +7,20 @@ import AdvertisementCard from "../../components/Home/AdvertisementCard/Advertise
 import Banner from "../../components/Shared/Banner";
 import Footer from "../../components/Home/Footer/Footer";
 import { useState } from "react";
+import useUsers from "../../hooks/useUsers";
 
 const AllProperty = () => {
+/*   const [users]=useUsers()
+  let userEmail = []
+const removeFraud = users?.filter(user=>user.role!=="fraud") */
+// console.log(removeFraud);
+// removeFraud.map(user=>userEmail.push(user.email))
+// console.log(userEmail)
   const [properties, isLoading] = useProperties();
-  const removeRejectedPropertied = properties.filter(prop=>prop.verificationStatus!=="rejected");
-  // console.log(removeRejectedPropertied);
+  const removeRejectedProperties = properties?.filter(prop=>prop.verificationStatus==="verified");
+  // const removeFraudAddedProperties = removeRejectedProperties?.filter(prop=>userEmail.includes(prop.agentEmail))
+  // console.log(removeFraudAddedProperties);
+  // console.log(removeRejectedProperties);
   // console.log(properties);
 const [filteredData, setFilteredData] = useState();
 
@@ -19,7 +28,7 @@ const [filteredData, setFilteredData] = useState();
     e.preventDefault();
   const searchData = e.target.searchBox.value.toLowerCase()
   console.log(searchData);
-  const filteredData = removeRejectedPropertied?.filter(prop=>prop.title.toLowerCase().includes(searchData))
+  const filteredData = removeRejectedProperties?.filter(prop=>prop.title.toLowerCase().includes(searchData))
   setFilteredData(filteredData)
   };
 // console.log(filteredData);
@@ -84,7 +93,7 @@ name="searchBox"
           <AdvertisementCard key={property._id} property={property} />
         ))
           :
-          removeRejectedPropertied?.map((property) => (
+          removeRejectedProperties?.map((property) => (
           <AdvertisementCard key={property._id} property={property} />
         ))
         

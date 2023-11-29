@@ -22,9 +22,14 @@ const MyProfile = () => {
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
           "
           >
+           {role==="fraud" ? <button className="m-1 capitalize rounded-md bg-gradient-to-bl from-red-400 via-red-400 to-red-600 p-2 pl-5 pr-5  text-white text-xl font-bold shadow-lg shadow-red-500/40 hover:via-red-500 hover:to-red-600 active:via-red-600 active:to-red-700">
+              {role ? role : ""} 
+            </button>
+            :
             <button className="m-1 capitalize rounded-md bg-gradient-to-bl from-green-400 via-green-400 to-green-600 p-2 pl-5 pr-5  text-white text-xl font-bold shadow-lg shadow-green-500/40 hover:via-green-500 hover:to-green-600 active:via-green-600 active:to-green-700">
               {role ? role : ""} ✅
             </button>
+            }
           </div>
         </div>
         <div className="relative shadow mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">

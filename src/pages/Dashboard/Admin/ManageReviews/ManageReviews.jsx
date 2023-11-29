@@ -4,10 +4,11 @@ import { getAllReviews } from "../../../../api/review";
 import ReviewCard from "../../../../components/ReviewSection/ReviewCard";
 import { Helmet } from "react-helmet-async";
 import Title from "../../../../components/Title/Title";
+import useAllReviews from "../../../../hooks/useAllreviews";
 
 const ManageReviews = () => {
   const isManageReview = true;
-  const { user, loading } = useAuth();
+ const { user, loading } = useAuth();
   const {
     data: allUsersReviews = [],
     isLoading,
@@ -16,7 +17,8 @@ const ManageReviews = () => {
     enabled: !loading && !!user?.email,
     queryKey: ["allUsersReviews"],
     queryFn: async () => await getAllReviews(),
-  });
+  }); 
+  // const [allUsersReviews,isLoading,refetch]=useAllReviews()
   // console.log(allUsersReviews);
   return (
     <div>

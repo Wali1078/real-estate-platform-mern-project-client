@@ -11,8 +11,10 @@ import {
   updateStatus,
 } from "../../../../api/bookings";
 import { updateSingleWishlist } from "../../../../api/properties";
+import useTheme from "../../../../hooks/useTheme";
 
 const CheckoutForm = ({ bookingInfo }) => {
+  const {theme} = useTheme();
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -139,14 +141,14 @@ const CheckoutForm = ({ bookingInfo }) => {
   return (
     <>
       <Title name={`Make Payment`}></Title>
-      <div className="mt-36 md:mt-56">
+      <div className="mt-36 md:mt-56 ">
         <form className="my-2" onSubmit={handleSubmit}>
           <CardElement
             options={{
               style: {
                 base: {
                   fontSize: "16px",
-                  color: "#424770",
+                  color: "#588157",
                   "::placeholder": {
                     color: "#aab7c4",
                   },

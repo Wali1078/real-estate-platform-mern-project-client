@@ -8,7 +8,7 @@ import { deleteWishlist } from "../../../../api/properties";
 
 const WishListCard = ({ wishlist,refetch, isWishlist, isPropertyBought }) => {
   const {user,loading} = useAuth()
-  console.log(Object.keys(wishlist).join(","));
+  // console.log(Object.keys(wishlist).join(","));
   const {
     _id,
     oldId,

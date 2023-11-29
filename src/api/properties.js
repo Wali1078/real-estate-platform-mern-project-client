@@ -24,10 +24,10 @@ export const deleteProperty = async (id) => {
 };
 //for agent
 //find requested property from wishlistCollection
-export const getRequestedProperty = async () => {
-  const { data } = await axiosSecure(`/wishlist/properties`);
+ export const getRequestedProperty = async (email) => {
+  const { data } = await axiosSecure(`/wishlist/requested-properties/${email}`);
   return data;
-};
+}; 
 
 // changed requested properties status
 export const changeWishlistStatus = async (id,myData) => {

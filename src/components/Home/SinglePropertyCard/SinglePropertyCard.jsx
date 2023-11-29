@@ -41,7 +41,7 @@ const handleAddToWishlist =async(e)=>{
        if(data.insertedId){
         toast.success("Wishlist property Successful")
        }else{
-        toast("Already Wishlisted")
+        toast("Already Wishlisted or Already Bought")
        }
     } catch (error) {
         toast.error(error.message)
