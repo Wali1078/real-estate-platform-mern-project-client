@@ -10,3 +10,14 @@ import axiosSecure from ".";
     const { data } = await axiosSecure(`/property/get-review/${id}`);
     return data;
   };
+  //find user review by user email
+  export const getUserReviews = async (email) => {
+    const { data } = await axiosSecure(`/property/user/get-review/${email}`);
+    return data;
+  };
+  
+   //delete user review by user id
+   export const removeReview = async (id) => {
+    const { data } = await axiosSecure(`/property/user/delete-review/${id}`);
+    return data;
+  };
