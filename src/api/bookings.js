@@ -17,7 +17,7 @@ export const updateStatus = async (id, bought) => {
     return data;
   };
   
-  // get all bookings for a guest by email
+  // get all bookings for a user by email
 export const getUserBookings = async (email) => {
     const { data } = await axiosSecure(`/bookings/user?email=${email}`);
     return data;

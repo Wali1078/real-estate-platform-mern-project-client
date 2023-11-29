@@ -28,6 +28,8 @@ const PropertyBought = () => {
           myWishlists?.map(wish=><WishListCard key={wish._id} wishlist={wish} isPropertyBought={isPropertyBought}/>)
         }
       </div>
+      {myWishlists.length === 0 && <p className="text-center flex items-center text-2xl justify-center h-[80vh]">No Data Available</p>}
+
     </div>
   )
 }

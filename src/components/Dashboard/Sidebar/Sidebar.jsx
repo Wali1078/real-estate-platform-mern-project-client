@@ -82,7 +82,7 @@ const Sidebar = () => {
               label={`My Profile`}
               address={`/dashboard`}
             ></MenuWrapper>
-            {/* if user is a guest */}
+            {/* if user is a user */}
             {role === "user" && <UserMenu />}
             {/* if user is a host */}
             {role === "agent" && <AgentMenu />}

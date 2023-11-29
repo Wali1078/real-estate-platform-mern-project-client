@@ -37,7 +37,7 @@ const MyAddedProperties = () => {
             <AdvertisementCard
               key={prop._id}
               property={prop}
-              isGuest={true}
+              isUser={true}
               refetch={refetch}
             />
           ))}

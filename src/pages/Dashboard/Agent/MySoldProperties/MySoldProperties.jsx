@@ -70,7 +70,8 @@ const MySoldProperties = () => {
         </div>
       </div>
     </div>
- 
+    {soldProperties.length === 0 && <p className="text-center flex items-center text-2xl justify-center h-[50vh]">No Data Available</p>}
+
     </div>
   )
 }

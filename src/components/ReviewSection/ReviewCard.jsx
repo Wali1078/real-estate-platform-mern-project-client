@@ -5,6 +5,9 @@ import { removeReview } from "../../api/review";
 
 const ReviewCard = ({ reviews, idx ,isMyReview,isManageReview,refetch}) => {
 
+const myDate = new Date(reviews?.reviewTime).toLocaleString()
+console.log(myDate);
+
 const handleRemoveReview =async(e)=>{
   e.preventDefault()
   // console.log(reviews._id);
@@ -25,8 +28,8 @@ const handleRemoveReview =async(e)=>{
       <p className="text-center text-xl font-bold underline dark:text-white">Review No:{idx+1}</p>
         <div className="text-right">
           <span className="text-sm  font-light text-gray-600 dark:text-gray-400">
-            Date : {reviews.reviewTime.split("T")[0]}, Time :{" "}
-            {reviews.reviewTime.split("T")[1].slice(0, 8)}
+            Date : {myDate.split(",")[0]}, Time :
+            {myDate.split(",")[1]}
           </span>
         </div>
         <div className="flex items-center justify-between flex-col md:flex-row">

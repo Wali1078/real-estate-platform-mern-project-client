@@ -1,5 +1,5 @@
 import axiosSecure from ".";
-// for guest
+// for user
 // Add a property
 export const addProperty = async (propertyData) => {
   const { data } = await axiosSecure.post(`/add-property`, propertyData);

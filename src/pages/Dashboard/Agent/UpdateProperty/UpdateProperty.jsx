@@ -82,10 +82,11 @@ const UpdateProperty = () => {
       const data = await updateProperty(_id,updatedData)
       // console.log(data)
       setUploadButtonText("Uploaded!");
-      if(data.insertedId){
+      console.log(data);
+      if(data.modifiedCount>0){
         toast.success('Property Updated!')
+        navigate("/dashboard/added-properties");
       }
-      navigate("/dashboard/added-properties");
     } catch (err) {
       console.log(err);
       toast.error(err.message);

@@ -7,11 +7,12 @@ import {
  
   updateSingleWishlist,
 } from "../../../../api/properties";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Loader from "../../../../components/Shared/Loader";
 
 const MakeAnOffer = () => {
+  const navigate=useNavigate()
   const { loading } = useAuth();
 const wishlist = useLoaderData()
 console.log(wishlist);
@@ -41,6 +42,7 @@ console.log(wishlist);
       // console.log(data);
       if (data.modifiedCount > 0) {
         toast.success("Make Offer Successful");
+        navigate("/dashboard/property-bought")
       } else {
         toast.success("Already Marked as Offered! ");
       }

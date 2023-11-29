@@ -66,7 +66,7 @@ try {
             <div className="mt-1 flex w-full">
               <div>
                 <span className="dark:text-white">Property Status : </span>
-                <span className="font-base mr-1 cursor-pointer text-lg text-green-800 dark:text-green-400">
+                <span className={`font-base mr-1 cursor-pointer capitalize text-lg font-bold ${verificationStatus === "verified" && "text-green-800 dark:text-green-400"} ${verificationStatus === "not verified" && "text-yellow-300 "}`}>
                   {verificationStatus}
                 </span>
               </div>
