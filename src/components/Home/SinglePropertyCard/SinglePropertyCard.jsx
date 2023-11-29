@@ -63,7 +63,7 @@ const handleAddToWishlist =async(e)=>{
          <div className="flex flex-col">
          <span className="text-lg font-bold text-gray-700 dark:text-white"> Agent : {agentName}</span>
           
-          <span className="text-base font-semibold"><span className="hidden md:block"> Location : </span>{location}</span>
+          <span className="text-base font-semibold"><span className="hidden md:inline"> Location : </span>{location}</span>
          </div>
          <p className="absolute right-24 text-xl dark:text-blue-500 font-bold hidden md:block">Add to WishList</p>
           <span onClick={(e)=>handleAddToWishlist(e,_id)} className="absolute right-6 flex h-10 w-10 md:h-14 md:w-14 cursor-pointer items-center rounded-full bg-blue-500/40 p-1 text-blue-400 backdrop-blur-md transition duration-300 ease-out hover:bg-green-500 hover:text-white hover:shadow-lg hover:shadow-green-500">
