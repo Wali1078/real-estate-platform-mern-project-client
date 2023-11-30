@@ -4,6 +4,7 @@ import useAuth from "../../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { getHostBookings } from "../../../../api/bookings";
 import SoldPropertyDataRow from "../../../../components/TableDataRow/SoldPropertyDataRow";
+import axiosSecure from "../../../../api";
 
 const MySoldProperties = () => {
 
@@ -18,8 +19,13 @@ const MySoldProperties = () => {
     queryFn: async () => await getHostBookings(user?.email),
   });
 
-
-
+//get total sell amount
+const {data} = useQuery({
+  enabled: !loading && !!user?.email,
+  queryKey: ["totalSold"],
+  queryFn: async () => await axiosSecure(`/agent-sale/${user?.email}`),
+});
+console.log(data?.data);
 
   return (
     <div>
@@ -27,7 +33,10 @@ const MySoldProperties = () => {
       <title>MySold Properties</title>
       </Helmet>
         <Title name={"My Sold Properties"}/>
+        {/* calculate total sale */}
+
         <div className="py-8">
+<h1 className="text-right text-xl">Total Sold amount : ${data?.data}</h1>
       <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
