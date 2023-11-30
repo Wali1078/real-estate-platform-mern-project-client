@@ -148,10 +148,10 @@ const Footer = () => {
                     Contact
                   </h3>
                   <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
-                    +1 526 654 8965
+                  (257) 563-7401
                   </span>
                   <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
-                    example@email.com
+                    abc@email.com
                   </span>
                 </div>
               </div>
