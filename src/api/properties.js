@@ -16,6 +16,11 @@ export const updateProperty = async (id,updatedData) => {
   const { data } = await axiosSecure.put(`/update-property/${id}`,updatedData);
   return data;
 };
+//update property by agent for adv
+export const updatePropertyForAds = async (id,updatedData) => {
+  const { data } = await axiosSecure.patch(`update/property/${id}`,updatedData);
+  return data;
+};
 
 //delete a property
 export const deleteProperty = async (id) => {
