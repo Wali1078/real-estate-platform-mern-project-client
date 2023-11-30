@@ -2,6 +2,7 @@ import { GrUserManager } from "react-icons/gr";
 import { FaUsers } from "react-icons/fa";
 import { MdRateReview } from "react-icons/md";
 import MenuWrapper from "../MenuWrapper/MenuWrapper";
+import { RiAdvertisementLine } from "react-icons/ri";
 
 const AdminMenu = () => {
   return (
@@ -20,6 +21,11 @@ const AdminMenu = () => {
         icon={MdRateReview}
         label={`Manage Reviews`}
         address={`/dashboard/manage-reviews`}
+      ></MenuWrapper>
+      <MenuWrapper
+        icon={RiAdvertisementLine}
+        label={`Advertise Property`}
+        address={`/dashboard/advertise-property`}
       ></MenuWrapper>
     </>
   );

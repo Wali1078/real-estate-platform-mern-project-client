@@ -26,6 +26,7 @@ import {  getSingleProperty, getSingleWishlist } from "../api/properties";
 import UpdateProperty from "../pages/Dashboard/Agent/UpdateProperty/UpdateProperty";
 import MakeAnOffer from "../pages/Dashboard/User/MakeAnOffer/MakeAnOffer";
 import Payment from "../pages/Dashboard/User/Payment/Payment";
+import AdvertiseProperty from "../pages/Dashboard/Admin/AdvertiseProperty/AdvertiseProperty";
 
 const MainRoutes = createBrowserRouter([
   {
@@ -207,6 +208,16 @@ const MainRoutes = createBrowserRouter([
           <PrivateRoute>
             <AdminRoute>
               <ManageReviews />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "advertise-property",
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AdvertiseProperty />
             </AdminRoute>
           </PrivateRoute>
         ),
