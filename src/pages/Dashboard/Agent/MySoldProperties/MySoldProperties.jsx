@@ -36,7 +36,7 @@ console.log(data?.data);
         {/* calculate total sale */}
 
         <div className="py-8">
-<h1 className="text-right text-xl">Total Sold amount : ${data?.data}</h1>
+<h1 className="text-center text-2xl font-semibold"> Your Total Sold amount is = ${data?.data} </h1>
       <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

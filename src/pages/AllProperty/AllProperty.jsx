@@ -7,21 +7,13 @@ import AdvertisementCard from "../../components/Home/AdvertisementCard/Advertise
 import Banner from "../../components/Shared/Banner";
 import Footer from "../../components/Home/Footer/Footer";
 import { useState } from "react";
-import useUsers from "../../hooks/useUsers";
 
 const AllProperty = () => {
-/*   const [users]=useUsers()
-  let userEmail = []
-const removeFraud = users?.filter(user=>user.role!=="fraud") */
-// console.log(removeFraud);
-// removeFraud.map(user=>userEmail.push(user.email))
-// console.log(userEmail)
+
   const [properties, isLoading] = useProperties();
-  const removeRejectedProperties = properties?.filter(prop=>prop.verificationStatus==="verified");
-  // const removeFraudAddedProperties = removeRejectedProperties?.filter(prop=>userEmail.includes(prop.agentEmail))
-  // console.log(removeFraudAddedProperties);
-  // console.log(removeRejectedProperties);
-  // console.log(properties);
+  const removeFraud = properties?.filter(prop=>prop.role!=="fraud")
+  const removeRejectedProperties = removeFraud?.filter(prop=>prop.verificationStatus==="verified");
+
 const [filteredData, setFilteredData] = useState();
 
   const handleSearch = (e) => {
