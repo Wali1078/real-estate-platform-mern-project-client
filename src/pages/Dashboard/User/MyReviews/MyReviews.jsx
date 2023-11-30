@@ -17,7 +17,7 @@ const isMyReview = true
     queryKey: ["userReviews"],
     queryFn: async () => await getUserReviews(user?.email),
   });
-  console.log(myReviews);
+  // console.log(myReviews);
   return (
     <>
     <Helmet>

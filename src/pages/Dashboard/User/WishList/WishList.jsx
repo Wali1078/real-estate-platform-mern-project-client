@@ -13,7 +13,7 @@ const isWishlist = true
     queryKey: ["wishlists"],
     queryFn: async () =>await getWishlistProperties(user?.email),
   });
-  console.log(wishlists);
+  // console.log(wishlists);
   return (
     <div>
       <Helmet>

@@ -14,7 +14,7 @@ const PropertyDetails = () => {
 
   const { id } = useParams();
   const [singleProperty, isLoading, refetch] = useSingleProperties(id);
-  console.log(singleProperty);
+  // console.log(singleProperty);
 
   
   return (

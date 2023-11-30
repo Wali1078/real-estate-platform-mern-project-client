@@ -19,7 +19,7 @@ const [filteredData, setFilteredData] = useState();
   const handleSearch = (e) => {
     e.preventDefault();
   const searchData = e.target.searchBox.value.toLowerCase()
-  console.log(searchData);
+  // console.log(searchData);
   const filteredData = removeRejectedProperties?.filter(prop=>prop.title.toLowerCase().includes(searchData))
   setFilteredData(filteredData)
   };

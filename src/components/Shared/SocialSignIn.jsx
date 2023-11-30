@@ -25,7 +25,7 @@ const SocialSignIn = () => {
     navigate(from, { replace: true })
     toast.success('Login Successful', { id: toastId })
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     toast.error(err?.message, { id: toastId })
   }
 }

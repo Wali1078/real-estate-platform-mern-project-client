@@ -7,10 +7,10 @@ const WishlistDataRow = ({ data, idx, refetch }) => {
 
   const handleAccept = async (e, id) => {
     e.preventDefault();
-    console.log(id);
+    // console.log(id);
     try {
       const response = await changeWishlistStatus(id,{status:"accepted"});
-      console.log(response);
+      // console.log(response);
 
       if (response.modifiedCount > 0) {
         toast.success("Offer Accepted");
@@ -22,10 +22,10 @@ const WishlistDataRow = ({ data, idx, refetch }) => {
   };
   const handleReject = async (e, id) => {
     e.preventDefault();
-    console.log(id);
+    // console.log(id);
     try {
       const response = await changeWishlistStatus(id,{status:"rejected"});
-      console.log(response);
+      // console.log(response);
 
       if (response.modifiedCount > 0) {
         toast.success("Offer Rejected");

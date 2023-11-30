@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 
 const SinglePropertyCard = ({ property }) => {
     const {user} = useAuth()
-console.log(property);
+// console.log(property);
   const {
     _id,
     title,

@@ -43,7 +43,7 @@ const AddProperty = () => {
    
 //upload image to db
     const image_url = await uploadImage(image)
-    console.log(image_url);
+    // console.log(image_url);
     // console.log(location,title,priceStart,priceEnd,description,image);
     const propertyData = {
       location,
@@ -57,7 +57,7 @@ const AddProperty = () => {
     }
     try {
       const data = await addProperty(propertyData)
-      console.log(data)
+      // console.log(data)
      setUploadButtonText('Uploaded!')
      if(data.insertedId){
        toast.success('Property Added!')
@@ -65,7 +65,7 @@ const AddProperty = () => {
       form.reset()
       navigate('/dashboard/added-properties')
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       toast.error(err.message)
     } finally {
       setIsLoading(false)

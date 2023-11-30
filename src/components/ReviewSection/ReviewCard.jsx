@@ -6,7 +6,7 @@ import { removeReview } from "../../api/review";
 const ReviewCard = ({ reviews, idx ,isMyReview,isManageReview,refetch}) => {
 
 const myDate = new Date(reviews?.reviewTime).toLocaleString()
-console.log(myDate);
+// console.log(myDate);
 
 const handleRemoveReview =async(e)=>{
   e.preventDefault()

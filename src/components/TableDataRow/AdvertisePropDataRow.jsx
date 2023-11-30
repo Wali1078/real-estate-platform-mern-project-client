@@ -26,7 +26,7 @@ const AdvertisePropDataRow = ({ prop, refetch, idx, totalAds }) => {
   const handleRemoveProp = async (ads) => {
     try {
       const data = await updatePropertyForAds(prop._id, { adv: ads });
-      console.log(data);
+      // console.log(data);
       if (data.modifiedCount > 0) {
         toast.success(` ${ads} successfully`);
         refetch();

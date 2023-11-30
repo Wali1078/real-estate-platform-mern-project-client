@@ -59,7 +59,7 @@ export default function Login() {
   console.log(errors);
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     const toastId = toast.loading("Logging in ...");
 
     try {

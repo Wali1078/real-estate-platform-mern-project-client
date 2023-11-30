@@ -25,7 +25,7 @@ const {data} = useQuery({
   queryKey: ["totalSold"],
   queryFn: async () => await axiosSecure(`/agent-sale/${user?.email}`),
 });
-console.log(data?.data);
+// console.log(data?.data);
 
   return (
     <div>

@@ -35,25 +35,25 @@ export default function UpdateProfileModal() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     try {
         //1. Upload Image
         const imageFile = { image: data.photoURL[0] };
         // console.log(imageFile);
         const imageData = await imageUpload(imageFile);
-        console.log(imageData);
+        // console.log(imageData);
         
         //3. change username & profile photo
       const result =  await updateUserProfile(data.name, imageData?.data?.display_url);
 //   console.log(result);
         //4. update user data in database
      const dbResponse = await updateUser(user);
-        console.log(dbResponse); 
+        // console.log(dbResponse); 
        
         toast.success("Profile Update Successful");
         closeModal()
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         toast.error(err?.message);
       }
     };

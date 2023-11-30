@@ -32,13 +32,13 @@ const WishListCard = ({ wishlist,refetch, isWishlist, isPropertyBought }) => {
     queryFn: async () =>await getUserBookings(user?.email),
   });
 
-  console.log(bookingData);
+  // console.log(bookingData);
 
 
 const handleRemoveFromWishlist =async()=>{
 try {
   const data = await deleteWishlist(_id)
-  console.log(data);
+  // console.log(data);
   if(data.deletedCount >0){
     toast.success("Wishlist deleted successfully")
     refetch()

@@ -52,7 +52,7 @@ reviewTime:new Date()
 }
 try {
   const data = await addReview(reviewData)
-console.log(data);
+// console.log(data);
 if(data.insertedId){
 toast.success("Review added successfully")
 refetch()

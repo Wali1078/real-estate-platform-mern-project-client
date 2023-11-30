@@ -15,9 +15,9 @@ const MakeAnOffer = () => {
   const navigate=useNavigate()
   const { loading } = useAuth();
 const wishlist = useLoaderData()
-console.log(wishlist);
+// console.log(wishlist);
   const currentDate = new Date().toISOString().split("T")[0];
-  console.log(wishlist);
+  // console.log(wishlist);
   const handleMakeAnOffer = async (e) => {
     e.preventDefault();
 
@@ -25,9 +25,9 @@ console.log(wishlist);
     const buyingDate = e.target.date.value;
     const updatingData = { offerPrice, buyingDate, status: "pending" };
     // console.log(updatingData);
-    console.log(wishlist.priceRangeStart);
-    console.log(wishlist.priceRangeEnd);
-    console.log(typeof offerPrice);
+    // console.log(wishlist.priceRangeStart);
+    // console.log(wishlist.priceRangeEnd);
+    // console.log(typeof offerPrice);
     if (
         parseInt(offerPrice) < parseInt(wishlist?.priceRangeStart) ||
         parseInt(offerPrice) > parseInt(wishlist?.priceRangeEnd)

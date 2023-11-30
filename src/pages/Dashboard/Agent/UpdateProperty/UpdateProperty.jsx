@@ -15,7 +15,7 @@ const UpdateProperty = () => {
   const [isLoading, setIsLoading] = useState(false)
   const { id } = useParams();
   const data = useLoaderData()
-  console.log(data);
+  // console.log(data);
   const [uploadButtonText, setUploadButtonText] = useState(
     "Upload Image (**Required**)"
   );
@@ -64,7 +64,7 @@ const UpdateProperty = () => {
 
     //upload image to db
     const image_url = await uploadImage(image)
-    console.log(image_url);
+    // console.log(image_url);
     // console.log(location,title,priceStart,priceEnd,description,image);
     const updatedData = {
       location,
@@ -82,13 +82,13 @@ const UpdateProperty = () => {
       const data = await updateProperty(_id,updatedData)
       // console.log(data)
       setUploadButtonText("Uploaded!");
-      console.log(data);
+      // console.log(data);
       if(data.modifiedCount>0){
         toast.success('Property Updated!')
         navigate("/dashboard/added-properties");
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err.message);
     } finally {
       setIsLoading(false)

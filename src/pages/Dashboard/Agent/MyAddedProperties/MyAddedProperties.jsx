@@ -19,7 +19,7 @@ const MyAddedProperties = () => {
     queryFn: async () => await getAgentProperty(user?.email),
   });
 
-  console.log(agentProperties);
+  // console.log(agentProperties);
 
 
   if (loading) return <Loader />

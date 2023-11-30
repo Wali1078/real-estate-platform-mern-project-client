@@ -13,7 +13,7 @@ import { useLoaderData } from 'react-router-dom';
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 const Payment = () => {
 const bookingInfo = useLoaderData()
-console.log(bookingInfo);
+// console.log(bookingInfo);
   return (
     <div>
             <Helmet>

@@ -15,7 +15,7 @@ const PropertyBought = () => {
       queryKey: ["myWishlists"],
       queryFn: async () =>await getUserWishlistProperties(user?.email),
     });
-    console.log(myWishlists);
+    // console.log(myWishlists);
     return (
       <div>
       <Helmet>

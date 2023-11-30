@@ -8,7 +8,7 @@ const handleStatusChange=async(status) =>{
     // console.log(id);
 try {
     const data = await updateProperties(id,status)
-console.log(data);
+// console.log(data);
 if(data.modifiedCount>0){
     toast.success("Verification status updated")
     refetch()

@@ -69,7 +69,7 @@ export default function Signup() {
       const imageFile = { image: data.photoURL[0] };
       // console.log(imageFile);
       const imageData = await imageUpload(imageFile);
-      console.log(imageData);
+      //  console.log(imageData);
 
       //2. User Registration
       const result = await createUser(data.email, data.password);
@@ -88,7 +88,7 @@ export default function Signup() {
 
       toast.success("Signup Successful", { id: toastId });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err?.message, { id: toastId });
     }
   };

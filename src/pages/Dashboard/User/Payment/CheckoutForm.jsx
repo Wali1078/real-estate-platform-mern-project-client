@@ -26,7 +26,7 @@ const CheckoutForm = ({ bookingInfo }) => {
     // create payment intent
     if (bookingInfo.offerPrice > 0) {
       createPaymentIntent({ price: bookingInfo.offerPrice }).then((data) => {
-        console.log(data.clientSecret);
+        // console.log(data.clientSecret);
         setClientSecret(data.clientSecret);
       });
     }
@@ -128,7 +128,7 @@ const CheckoutForm = ({ bookingInfo }) => {
         toast.success(text);
         navigate("/dashboard/property-bought");
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         toast.error(err.message);
       } finally {
         setProcessing(false);

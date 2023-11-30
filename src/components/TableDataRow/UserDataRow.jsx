@@ -10,7 +10,7 @@ const UserDataRow = ({ idx, user, refetch }) => {
     // console.log(role);
      try {
       const data = await updateRole(user?.email, role);
-      console.log(data);
+      // console.log(data);
       if (data.modifiedCount > 0) {
         toast.success(`User is now ${role}`);
         refetch()
@@ -26,7 +26,7 @@ const handleUpdateUser =async (e)=>{
   e.preventDefault();
   try {
     const data = await deleteUser(user?._id);
-    console.log(data);
+    // console.log(data);
     if (data.deletedCount > 0) {
       toast.success(`${user.role} is now deleted`);
       refetch()
