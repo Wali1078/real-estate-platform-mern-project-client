@@ -12,6 +12,13 @@ export const saveUser = async (user) => {
 
   return data;
 };
+// Update user data in database
+export const updateUser = async (user) => {
+
+  const { data } = await axiosSecure.patch(`/users/${user?.email}`, { name:user.displayName});
+
+  return data;
+};
 
 // Get token from server
 export const getToken = async (email) => {

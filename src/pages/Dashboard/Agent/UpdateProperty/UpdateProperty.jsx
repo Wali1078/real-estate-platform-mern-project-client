@@ -94,7 +94,7 @@ const UpdateProperty = () => {
       setIsLoading(false)
     }
 
-    console.table(propertyData);
+    // console.table(propertyData);
   };
 
   return (
