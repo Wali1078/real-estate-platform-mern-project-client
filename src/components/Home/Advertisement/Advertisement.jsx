@@ -8,7 +8,8 @@ const Advertisement = () => {
   // console.log(properties);
 
 
-const filteredProp = properties.filter(prop=>prop.adv==="addAds")
+  const filteredFraud = properties.filter(prop=>prop.role!=="fraud")
+const filteredProp = filteredFraud.filter(prop=>prop.adv==="addAds")
 
   if (isLoading) return <Loader />;
   return (

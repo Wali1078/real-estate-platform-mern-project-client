@@ -15,7 +15,7 @@ export const saveUser = async (user) => {
 // Update user data in database
 export const updateUser = async (user) => {
 
-  const { data } = await axiosSecure.patch(`/users/${user?.email}`, { name:user.displayName});
+  const { data } = await axiosSecure.patch(`/users/name/${user?.email}`, { name:user.displayName});
 
   return data;
 };

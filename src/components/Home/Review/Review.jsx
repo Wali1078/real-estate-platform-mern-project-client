@@ -1,4 +1,6 @@
 import Title from "../../Title/Title";
+import { BiSolidQuoteLeft } from "react-icons/bi";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -11,14 +13,10 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useQuery } from "@tanstack/react-query";
 import { getAllReviews } from "../../../api/review";
-import useAuth from "../../../hooks/useAuth";
 import MyContainer from "../../Shared/MyContainer";
 
-// import useAllReviews from "../../../hooks/useAllreviews";
 
 const Review = () => {
-  // const [allUsersReviews,isLoading,refetch]=useAllReviews()
-  // console.log(allUsersReviews);
   const {
     data= [],
     isLoading,
@@ -71,7 +69,7 @@ const firstFiveSortedData = sortedTimestamps.slice(0,5)
           <SwiperSlide key={review._id}>
             <MyContainer>
             <div className="flex flex-col items-center mx-24 my-16 ">
-              {/* <BiSolidQuoteLeft size={80} /> */}
+              <BiSolidQuoteLeft size={80} className="dark:text-white"/>
               <p className="py-8 text-4xl overflow-hidden max-w-sm md:max-w-md lg:max-w-lg dark:text-white">Property Title:{review.title}</p>
               <h3 className="text-2xl  overflow-hidden max-w-sm md:max-w-md lg:max-w-lg text-blue-400">{review.review}</h3>
              

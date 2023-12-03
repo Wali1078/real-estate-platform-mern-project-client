@@ -22,9 +22,9 @@ const PropertyDetails = () => {
       <Helmet>
         <title>Dream🏚️ | Property</title>
       </Helmet>
-      <Banner link={"https://i.ibb.co/gvT5XYX/pexels-pixabay-277667.jpg"} />
+      <Banner link={"https://i.ibb.co/jHgJCMq/pexels-athena-2962124.jpg"} />
 
-      <div className="absolute top-[40%] left-1/2 transform -translate-x-1/2 w-[80vw]  md:w-[50vw] bg-slate-400">
+      <div className="absolute top-[40%] left-1/2 transform -translate-x-1/2 w-[80vw]  md:max-w-[50vw] bg-slate-400">
         <Title name={`View Property Details Here`}></Title>
       </div>
 

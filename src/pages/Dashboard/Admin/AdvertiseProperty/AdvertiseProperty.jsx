@@ -8,8 +8,9 @@ const AdvertiseProperty = () => {
 
   const [properties, isLoading,refetch] = useProperties();
   const removeRejectedProperties = properties?.filter(prop=>prop.verificationStatus==="verified");
+  const removeFraudsProperties = removeRejectedProperties?.filter(prop=>prop.role!=="fraud");
   // console.log(removeRejectedProperties);
-  const totalAdvCount = removeRejectedProperties?.filter(item=>item.adv==="addAds")
+  const totalAdvCount = removeFraudsProperties?.filter(item=>item.adv==="addAds")
   // console.log(totalAdvCount.length);
 const totalAds = totalAdvCount.length
   return (
@@ -51,8 +52,8 @@ const totalAds = totalAdvCount.length
               </tr>
             </thead>
             <tbody>
-              {removeRejectedProperties &&
-                removeRejectedProperties?.map((prop,idx) => (
+              {removeFraudsProperties &&
+                removeFraudsProperties?.map((prop,idx) => (
                   <AdvertisePropDataRow key={prop._id} idx={idx} prop={prop} refetch={refetch} totalAds={totalAds}/>
                 ))} 
             </tbody>

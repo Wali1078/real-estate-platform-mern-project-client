@@ -30,7 +30,7 @@ const {data} = useQuery({
   return (
     <div>
       <Helmet>
-      <title>MySold Properties</title>
+      <title>My Sold Properties</title>
       </Helmet>
         <Title name={"My Sold Properties"}/>
         {/* calculate total sale */}

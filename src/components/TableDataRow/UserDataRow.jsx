@@ -22,7 +22,7 @@ const UserDataRow = ({ idx, user, refetch }) => {
     } 
   };
 
-const handleUpdateUser =async (e)=>{
+const handleDeleteUser =async (e)=>{
   e.preventDefault();
   try {
     const data = await deleteUser(user?._id);
@@ -50,7 +50,7 @@ const handleUpdateUser =async (e)=>{
         scope="row"
         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
       >
-        {user?.name || "ff"}
+        {user?.name}
       </th>
       <th
         scope="row"
@@ -101,7 +101,7 @@ const handleUpdateUser =async (e)=>{
       </td>
       <td className="px-6 py-4">
        {user.role !== "admin" && <button
-          onClick={(e) => handleUpdateUser(e)}
+          onClick={(e) => handleDeleteUser(e)}
 
           className="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
         >

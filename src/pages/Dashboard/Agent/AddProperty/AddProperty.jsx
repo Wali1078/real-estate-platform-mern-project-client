@@ -1,6 +1,6 @@
 import { TbLoader3 } from "react-icons/tb";
 import useAuth from "../../../../hooks/useAuth";
-import { imageUpload, uploadImage } from "../../../../api/utils";
+import { uploadImage } from "../../../../api/utils";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -53,7 +53,8 @@ const AddProperty = () => {
       desc:description,
       image: image_url?.data?.display_url,
       agentName,agentImg,agentEmail,
-      verificationStatus:"not verified"
+      verificationStatus:"not verified",
+      adv:"removeAds"
     }
     try {
       const data = await addProperty(propertyData)

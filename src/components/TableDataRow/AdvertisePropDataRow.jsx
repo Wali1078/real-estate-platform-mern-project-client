@@ -118,50 +118,7 @@ const AdvertisePropDataRow = ({ prop, refetch, idx, totalAds }) => {
           </button>
         </th>
       )}
-      {/*  <td className="px-6 py-4 ">
-      {user.role !== "admin" && user.role !== "fraud" && (
-        <button
-          onClick={(e) => handleUpdateRole(e,"admin")}
-          className={`text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900`}
-        >
-          Action
-        </button>
-      )}
-      {user.role === "fraud" && <p className="text-center">Fraud</p>}
-    </td> */}
-      {/*   <td className="px-6 py-4">
-      {user.role !== "agent" &&
-        user.role !== "admin" &&
-        user.role !== "fraud" && (
-          <button
-            onClick={(e) => handleUpdateRole(e,"agent")}
-            className="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900"
-          >
-            Action
-          </button>
-        )}
-      {user.role === "fraud" && <p className="text-center">Fraud</p>}
-    </td> */}
-      {/*  <td className="px-6 py-4">
-      {user.role !== "fraud" &&  user.role !== "admin" &&(
-        <button
-          onClick={(e) => handleUpdateRole(e,"fraud")}
-          className="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
-        >
-          Action
-        </button>
-      )}
-      {user.role === "fraud" && <p className="text-center">Fraud</p>}
-    </td> */}
-      {/* <td className="px-6 py-4">
-     {user.role !== "admin" && <button
-        onClick={(e) => handleUpdateUser(e)}
-
-        className="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
-      >
-        <RiDeleteBin6Fill />
-      </button>}
-    </td> */}
+    
     </tr>
   );
 };

@@ -32,7 +32,7 @@ const [filteredData, setFilteredData] = useState();
       </Helmet>
 
       {/* banner */}
-      <Banner link="https://i.ibb.co/pjt5nJY/pexels-pixabay-262405.jpg"/>
+      <Banner link="https://i.ibb.co/KhNTdn5/pexels-matthis-volquardsen-2350583.jpg"/>
       {/* searchBox */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-[80vw] md:w-[50vw]">
         <form onSubmit={handleSearch}>

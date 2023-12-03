@@ -25,9 +25,9 @@ if(isLoading) return <Loader/>
   return (
     <div>
 <Helmet>
-  <title>Manage Reviews</title>
+  <title>Manage Properties</title>
 </Helmet>
-<Title name={`Manage Review`}/>
+<Title name={`Manage Properties`}/>
 <div className="py-8">
       <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

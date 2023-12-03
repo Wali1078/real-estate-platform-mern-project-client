@@ -4,7 +4,9 @@ import { getAllReviews } from "../../../../api/review";
 import ReviewCard from "../../../../components/ReviewSection/ReviewCard";
 import { Helmet } from "react-helmet-async";
 import Title from "../../../../components/Title/Title";
-import useAllReviews from "../../../../hooks/useAllreviews";
+
+
+
 
 const ManageReviews = () => {
   const isManageReview = true;
@@ -25,7 +27,7 @@ const ManageReviews = () => {
     <Helmet>
       <title>Manage Reviews</title>
     </Helmet>
-    <Title>Manage Reviews</Title>
+    <Title name={`Manage Reviews`}></Title>
       {allUsersReviews?.map((review, idx) => (
         <ReviewCard
           key={review._id}
