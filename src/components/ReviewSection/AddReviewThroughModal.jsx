@@ -3,8 +3,6 @@ import { Fragment, useState } from "react";
 import { addReview } from "../../api/review";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
-import useSingleProperties from "../../hooks/useSingleProperty";
-import { useParams } from "react-router-dom";
 
 export default function AddReviewThroughModal({property,refetch}) {
   

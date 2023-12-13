@@ -39,10 +39,9 @@ dateObjects.sort((a, b) => b - a);
 
 // Convert sorted Date objects back to formatted strings
 const sortedTimestamps = dateObjects.map((date) => date.toISOString());
-// console.log(sortedTimestamps);
+
 const firstFiveSortedData = sortedTimestamps.slice(0,5)
-// const firstFiveSortedData = dateObjects.slice(0,5)
-// console.log(firstFiveSortedData);
+
 
  const sortedData = data?.filter(item=>firstFiveSortedData.includes(item.reviewTime))
 //  console.log(sortedData);
@@ -102,12 +101,6 @@ const firstFiveSortedData = sortedTimestamps.slice(0,5)
             </MyContainer>
           </SwiperSlide>
         ))}
-        {/* <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide> */}
       </Swiper>
     </div>
   );
