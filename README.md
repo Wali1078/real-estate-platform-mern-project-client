@@ -25,6 +25,52 @@
 
 ---
 
+ 
+ Admin email: admin@gmail.com    
+ Admin password: Qwert@2   
+    
+
+## 🪶 <span style=" color: #fc9f11;font-size:25px">Key Features</span>
+- Three types of routes (User Route, Agent Route, Admin Route).
+- JWT token security 
+- Firebase authentication 
+- Image hosting feature
+- Payment getaway (Using Strip) 
+
+
+## 🧑‍💻 <span style=" color: #fc9f11;font-size:25px">Technology Used<span>
+<p align="center">
+  <a href="">
+    <img src="https://skillicons.dev/icons?i=react,tailwind,firebase,express,mongodb" />
+  </a>
+</p>
+
+## <span style=" color: #fc9f11;font-size:25px">Other Technologies</span>
+
+###### MaterialUi | Strip  | JWT | Axios | React-Hook-Form | Tanstack Query,  etc
+
+## <span style=" color: #fc9f11;font-size:25px">Run the project in your system</span>
+
+### <span style=" color: #FA07EF">Client Side .env.local file example</span>
+
+VITE_APIKEY= "Your Firebase Api Key"   
+VITE_AUTHDOMAIN="Your Firebase domain"   
+VITE_PROJECTID="Your FireBase project Id"   
+VITE_STORAGEBUCKET= "Your Firebase Storage Bucket"   
+VITE_MESSAGINGSENDERID="Your Firebase Messaging Sender id"   
+VITE_APPID="Your Firebase App Id"   
+VITE_IMGBB_API_KEY="Your imagebb Api key"   
+VITE_PAYMENT_GATEWAY_PK="stripe public key for payment system"   
+VITE_API_URL=https://real-estate-platform-mern-project-assignment-12-server.vercel.app
+   
+
+### <span style=" color: #FA07EF">Server side .env file example</span>
+
+ DB_USER="Database (MongoDB) User Id"    
+ DB_PASS="Database (MongoDb) password"    
+ ACCESS_TOKEN_SECRET="JWT Secret Token"      
+PAYMENT_SECRET_KEY="Strip Payment Secret Key"   
+
 
 ### <span style=" color: #fc9f11;font-size:25px"> Features and functionalities of my website : </span>
 
