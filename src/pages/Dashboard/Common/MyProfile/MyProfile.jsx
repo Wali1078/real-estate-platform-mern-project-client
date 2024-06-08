@@ -51,9 +51,9 @@ const MyProfile = () => {
             Update Profile
           </button> */}
           <UpdateProfileModal/>
-          <button className="rounded-md  border-2 border-slate-400 px-5 py-2 text-sm font-medium text-slate-400 shadow-md transition duration-150 ease-in-out hover:bg-slate-400 hover:text-white hover:shadow-lg focus:outline-none focus:ring-0 active:bg-slate-600">
+          {/* <button className="rounded-md  border-2 border-slate-400 px-5 py-2 text-sm font-medium text-slate-400 shadow-md transition duration-150 ease-in-out hover:bg-slate-400 hover:text-white hover:shadow-lg focus:outline-none focus:ring-0 active:bg-slate-600">
             Change Password
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

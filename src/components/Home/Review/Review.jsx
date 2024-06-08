@@ -17,40 +17,29 @@ import MyContainer from "../../Shared/MyContainer";
 
 
 const Review = () => {
-  const {
-    data= [],
-    isLoading,
-    refetch,
-  } = useQuery({
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ["homeReviews"],
     queryFn: async () => await getAllReviews(),
   });
-  // console.log(data);
 
-  // const myDate = new Date(data?.reviewTime).toLocaleString()
-  // console.log(myDate);
-const date =[]
-data?.map(item=>date.push(item.reviewTime))
-// console.log(date);
-const dateObjects = date.map((timestamp) => new Date(timestamp));
-// console.log(dateObjects);
-// Sort the Date objects in descending order
-dateObjects.sort((a, b) => b - a);
+  // Ensure data is treated as an array
+  const reviews = Array.isArray(data) ? data : [];
 
-// Convert sorted Date objects back to formatted strings
-const sortedTimestamps = dateObjects.map((date) => date.toISOString());
+  // Transform and sort review dates
+  const dateObjects = reviews.map(review => new Date(review.reviewTime));
+  dateObjects.sort((a, b) => b - a);
+  const sortedTimestamps = dateObjects.map(date => date.toISOString());
+  const firstFiveSortedData = sortedTimestamps.slice(0, 5);
+  const sortedData = reviews.filter(review => firstFiveSortedData.includes(review.reviewTime));
 
-const firstFiveSortedData = sortedTimestamps.slice(0,5)
-
-
- const sortedData = data?.filter(item=>firstFiveSortedData.includes(item.reviewTime))
-//  console.log(sortedData);
-
+  if (isLoading) {
+    return <div>Loading...</div>; // Or any other loading component you have
+  }
 
   return (
-    <div className="">
-     <Title name={`Review`}/>
-     <Swiper
+    <div>
+      <Title name={`Review`} />
+      <Swiper
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
@@ -64,40 +53,30 @@ const firstFiveSortedData = sortedTimestamps.slice(0,5)
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-     {sortedData?.slice().reverse().map((review) => (
+        {sortedData.slice().reverse().map((review) => (
           <SwiperSlide key={review._id}>
             <MyContainer>
-            <div className="flex flex-col items-center mx-24 my-16 ">
-              <BiSolidQuoteLeft size={80} className="dark:text-white"/>
-              <p className="py-8 text-4xl overflow-hidden max-w-sm md:max-w-md lg:max-w-lg dark:text-white">Property Title:{review.title}</p>
-              <h3 className="text-2xl  overflow-hidden max-w-sm md:max-w-md lg:max-w-lg text-blue-400">{review.review}</h3>
-             
-
-              <div className="flex items-center mt-4">
-            <img
-              className="hidden object-cover w-16 h-16 mx-4 rounded-full sm:block"
-              src={review.userImg}
-              alt="avatar"
-            />
-            <p
-              className="font-bold text-gray-700 capitalize dark:text-gray-200"
-             
-            >
-         {review.userName} <br />
-             Date : {review.reviewTime.split('T')[0]} <br/> 
-             Time : {new Date(review?.reviewTime).toLocaleString().split(",")[1]}
-            </p>
-          
-          </div>
-          <br />
-            <p
-              className="font-bold text-gray-700  dark:text-gray-200"
-             
-            >
-             
-            </p>
-
-            </div>
+              <div className="flex flex-col items-center mx-24 my-16 ">
+                <BiSolidQuoteLeft size={80} className="dark:text-white"/>
+                <p className="py-8 text-4xl overflow-hidden max-w-sm md:max-w-md lg:max-w-lg dark:text-white">
+                  Property Title:{review.title}
+                </p>
+                <h3 className="text-2xl overflow-hidden max-w-sm md:max-w-md lg:max-w-lg text-blue-400">
+                  {review.review}
+                </h3>
+                <div className="flex items-center mt-4">
+                  <img
+                    className="hidden object-cover w-16 h-16 mx-4 rounded-full sm:block"
+                    src={review.userImg}
+                    alt="avatar"
+                  />
+                  <p className="font-bold text-gray-700 capitalize dark:text-gray-200">
+                    {review.userName} <br />
+                    Date : {review.reviewTime.split('T')[0]} <br />
+                    Time : {new Date(review?.reviewTime).toLocaleString().split(",")[1]}
+                  </p>
+                </div>
+              </div>
             </MyContainer>
           </SwiperSlide>
         ))}

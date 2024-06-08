@@ -52,7 +52,7 @@ const handleAddToWishlist =async(e)=>{
     <div>
       <div className="mt-4  rounded-t-xl bg-gray-100 shadow-2xl dark:bg-gray-900">
         <div className="text-sm font-medium text-gray-400">
-          <img className="w-full h-[70vh] rounded-t-lg" src={image && image} />
+          <img className="w-full h-[100vh] rounded-t-lg" src={image && image} />
         </div>
         <div className="relative flex w-full items-center self-center overflow-hidden px-5 py-5 text-gray-600 focus-within:text-gray-400">
           <img

@@ -2,10 +2,10 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
+import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -16,6 +16,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import DarkMode from "../../DarkMode/DarkMode";
 import useRole from "../../../hooks/useRole";
+
 
 function Navbar() {
   const navigate = useNavigate();
@@ -36,8 +37,8 @@ function Navbar() {
 
   {
     user
-      ? (settings = ["Profile", "My Account", "Logout"])
-      : (settings = ["Profile", "My Account", "Login"]);
+      ? (settings = ["Profile", "Logout"])
+      : (settings = ["Profile", "Login"]);
   }
 
   const handleOpenNavMenu = (event) => {
@@ -63,8 +64,7 @@ function Navbar() {
       logOut(); // Call your logout function
     } else if (setting === "Login") {
       navigate("/login");
-    }
-     else if (setting === "Profile") {
+    } else if (setting === "Profile") {
       navigate("/dashboard");
     }
   };
@@ -80,6 +80,7 @@ function Navbar() {
       }}
     >
       <Container>
+        
         <Toolbar disableGutters>
           {/* logo for md and lg */}
           <Link to={`/`}>
@@ -107,8 +108,10 @@ function Navbar() {
                 }}
               />
             </Typography>
+            
           </Link>
-
+          
+            
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -137,28 +140,29 @@ function Navbar() {
               sx={{
                 display: { xs: "block", md: "none" },
               }}
+              
             >
+              
               {/* for mobile and  medium devices */}
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <NavLink
-                      // to={`/${page}`}
-                      to={page === "home" ? "/" : `/${page}`}
-                      className={({ isActive }) =>
-                        isActive
-                          ? "btn  btn-sm  border-none text-black underline rounded-2xl  capitalize"
-                          : "btn btn-ghost btn-sm capitalize"
-                      }
-                    >
-                      {page.includes("-") ? page.replace(/-/g, " ") : page}
-                    </NavLink>
-                  </Typography>
+                  <NavLink
+                    to={page === "home" ? "/" : `/${page}`}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "btn  btn-sm  border-none text-black underline rounded-2xl  capitalize"
+                        : "btn btn-ghost btn-sm capitalize"
+                    }
+                    component={Typography}
+                  >
+                    {page.includes("-") ? page.replace(/-/g, " ") : page}
+                    
+                  </NavLink>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-
+          
           {/* logo fo sm */}
 
           <Typography
@@ -189,9 +193,7 @@ function Navbar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {/* for large devices */}
                 <NavLink
-                  // to={`/${page}`}
                   to={page === "home" ? "/" : `/${page}`}
                   className={({ isActive }) =>
                     isActive
@@ -201,10 +203,13 @@ function Navbar() {
                 >
                   {page.includes("-") ? page.replace(/-/g, " ") : page}
                 </NavLink>
-              </Button>
-            ))}
-          </Box>
 
+              </Button>
+             
+            ))}
+
+          </Box>
+          
           <Box sx={{ flexGrow: 0 }}>
             {/* //display user name and role */}
             <Typography sx={{ pr: 2, display: { xs: "none", md: "initial" } }}>
@@ -213,22 +218,24 @@ function Navbar() {
               </span>
             </Typography>
             <Tooltip title="Open settings">
-              {/* avatar part */}
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={
-                    user
-                      ? user?.photoURL
-                      : "https://i.ibb.co/k34HkxR/istockphoto-1300845620-612x612.jpg"
-                  }
-                />
-              </IconButton>
+              <div>
+                {/* avatar part */}
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar
+                    alt="Remy Sharp"
+                    src={
+                      user
+                        ? user?.photoURL
+                        : "https://i.ibb.co/k34HkxR/istockphoto-1300845620-612x612.jpg"
+                    }
+                  />
+                </IconButton>
 
-              {/* dark Theme */}
-              <IconButton sx={{ p: 0 }}>
-                <DarkMode />
-              </IconButton>
+                {/* dark Theme */}
+                <IconButton sx={{ p: 0 }}>
+                  <DarkMode />
+                </IconButton>
+              </div>
             </Tooltip>
             <Menu
               sx={{ mt: "45px" }}

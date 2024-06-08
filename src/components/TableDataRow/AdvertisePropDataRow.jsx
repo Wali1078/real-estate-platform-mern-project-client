@@ -8,7 +8,7 @@ const AdvertisePropDataRow = ({ prop, refetch, idx, totalAds }) => {
   console.log(totalAds);
 
   const handleAddProp = async (ads) => {
-    if (totalAds < 6) {
+    if (totalAds < 15) {
       try {
         const data = await updatePropertyForAds(prop._id, { adv: ads });
         // console.log(data);

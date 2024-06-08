@@ -20,6 +20,7 @@ import { TbLoader3 } from "react-icons/tb";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 
+
 function Copyright(props) {
   return (
     <Typography
@@ -92,7 +93,7 @@ export default function Login() {
           md={7}
           sx={{
             backgroundImage:
-              "url(https://source.unsplash.com/random?wallpapers)",
+              "url(/new03.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -112,6 +113,8 @@ export default function Login() {
               alignItems: "center",
             }}
           >
+          
+
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
@@ -202,6 +205,13 @@ export default function Login() {
                 'Log In'
               )}
               </Button>
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <NavLink to="/" className="text-blue-500">
+                    Back to Main Page
+                  </NavLink>
+                </Grid>
+              </Grid>
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">

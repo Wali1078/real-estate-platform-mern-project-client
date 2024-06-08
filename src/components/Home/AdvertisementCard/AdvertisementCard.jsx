@@ -62,7 +62,7 @@ const AdvertisementCard = ({ property, isUser, refetch }) => {
         <div className="mx-3 mb-7 mt-1 px-2 text-sm font-medium text-gray-400">
           <img
             className="w-full h-56 rounded"
-            src={image}
+            src={Array.isArray(image) ? image[0] : image}
             alt="Advertisement"
           />
         </div>

@@ -108,7 +108,7 @@ export default function Signup() {
           md={7}
           sx={{
             backgroundImage:
-              "url(https://source.unsplash.com/random?wallpapers)",
+              "url(/new03.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -287,7 +287,14 @@ export default function Signup() {
                 'Sign up'
               )}
               </Button>
+              
+              <Grid container></Grid>
               <Grid container justifyContent="flex-end">
+              <Grid item xs={6}>
+                  <NavLink to="/" className="text-blue-500">
+                    Back to Main Page
+                  </NavLink>
+                </Grid>
                 <Grid item>
                   <NavLink to="/login" className="text-blue-600">
                     Already have an account? Sign in

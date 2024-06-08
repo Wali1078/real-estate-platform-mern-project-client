@@ -34,7 +34,7 @@ const [filteredData, setFilteredData] = useState();
       {/* banner */}
       <Banner link="https://i.ibb.co/KhNTdn5/pexels-matthis-volquardsen-2350583.jpg"/>
       {/* searchBox */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-[80vw] md:w-[50vw]">
+      <div className="relative top-1/4 left-1/2 transform -translate-x-1/2 w-[80vw] md:w-[50vw]">
         <form onSubmit={handleSearch}>
           <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
             Search

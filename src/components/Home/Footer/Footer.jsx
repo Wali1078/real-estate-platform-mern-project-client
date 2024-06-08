@@ -16,7 +16,7 @@ const Footer = () => {
                 </span>
 
                 <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">
-                  Join 31,000+ other and never miss out on new tips, tutorials,
+                  Join 31,000+ other and never miss out on newly added properties,
                   and more.
                 </p>
 
@@ -148,7 +148,7 @@ const Footer = () => {
                     Contact
                   </h3>
                   <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
-                  (257) 563-7401
+                  (+7) 705 131 66 24
                   </span>
                   <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
                     abc@email.com
